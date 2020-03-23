@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Covid</title>
+  </head>
+  <body>
+    <div id="container">
+      <img src="https://via.placeholder.com/300x120" alt="logo" />
+      <p class="hero">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque,
+        assumenda dolores?
+      </p>
+      <div class="form box">
+        <div>
+          <input id="idade" type="tel" maxlength="3" placeholder="Idade" />
+          <select name="sexo" id="sexo">
+            <option value="0">Sexo</option>
+            <option value="feminino">Feminino</option>
+            <option value="masculino">Fasculino</option>
+          </select>
+        </div>
+        <input type="text" id="profissao" placeholder="Profissão" />
+        <input type="text" id="cidade" placeholder="Cidade" />
+      </div>
+      <button id="send" onclick="enviar()">QUERO SUPORTE</button>
+      <p class="sigilo">Nenhum campo é obrigatório. As informações serão mantidas em sigilo.</p>
+      <p class="textoOu">ou</p>
+      <button id="anonimo" onclick="enviar(false)" >ACESSAR ANONIMAMENTE</button>
+      <div class="patrocinadores">
+        <p class="texto">Lorem é possível graças a</p>
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <a href="/#">Quero fazer parte</a>
+      </div>
+    </div>
+    <script>
+      function enviar() {
+        console.log(12);
+      }
+    </script>
+  </body>
+</html>
