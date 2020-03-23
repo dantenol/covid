@@ -14,33 +14,98 @@
         assumenda dolores?
       </p>
       <div class="form box">
-        <div>
-          <input id="idade" type="tel" maxlength="3" placeholder="Idade" />
-          <select name="sexo" id="sexo">
-            <option value="0">Sexo</option>
-            <option value="feminino">Feminino</option>
-            <option value="masculino">Fasculino</option>
-          </select>
-        </div>
-        <input type="text" id="profissao" placeholder="Profissão" />
-        <input type="text" id="cidade" placeholder="Cidade" />
+        <form id="form">
+          <div>
+            <input
+              id="idade"
+              name="entry.191063900"
+              class="field"
+              type="tel"
+              maxlength="3"
+              placeholder="Idade"
+            />
+            <select class="field" name="entry.803698201" name="sexo" id="sexo">
+              <option value="0">Sexo</option>
+              <option value="feminino">Feminino</option>
+              <option value="masculino">Fasculino</option>
+            </select>
+          </div>
+          <input
+            class="field"
+            type="text"
+            name="entry.25375800"
+            id="profissao"
+            placeholder="Profissão"
+          />
+          <input
+            class="field"
+            type="text"
+            name="entry.880918784"
+            id="cidade"
+            placeholder="Cidade"
+          />
+        </form>
       </div>
       <button id="send" onclick="enviar()">QUERO SUPORTE</button>
-      <p class="sigilo">Nenhum campo é obrigatório. As informações serão mantidas em sigilo.</p>
+      <p class="sigilo">
+        Nenhum campo é obrigatório. As informações serão mantidas em sigilo.
+      </p>
       <p class="textoOu">ou</p>
-      <button id="anonimo" onclick="enviar(false)" >ACESSAR ANONIMAMENTE</button>
+      <button id="anonimo" onclick="enviar(false)">ACESSAR ANONIMAMENTE</button>
       <div class="patrocinadores">
         <p class="texto">Lorem é possível graças a</p>
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <img src="https://via.placeholder.com/300x200" alt="">
+        <img src="https://via.placeholder.com/300x200" alt="" />
+        <img src="https://via.placeholder.com/300x200" alt="" />
+        <img src="https://via.placeholder.com/300x200" alt="" />
+        <img src="https://via.placeholder.com/300x200" alt="" />
         <a href="/#">Quero fazer parte</a>
       </div>
     </div>
     <script>
-      function enviar() {
-        console.log(12);
+      function makeid(length) {
+        var result = "";
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+          result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+          );
+        }
+        return result;
+      }
+
+      function formatarObj() {
+        const obj = { "entry.1408099913": makeid(6) };
+        const e = document.getElementsByClassName("field");
+        for (let i = 0; i < e.length; i++) {
+          let c = e[i],
+            n = c.getAttribute("name");
+          if (n) obj[n] = c.value;
+        }
+        return obj;
+      }
+
+      async function enviar() {
+        const data = formatarObj();
+        const formData = new FormData();
+        for (var key in data) {
+          formData.append(key, data[key]);
+        }
+
+        try {
+          const res = await fetch(
+            "https://docs.google.com/forms/d/e/1FAIpQLScHyIrEsB8J2HNZ3Fq63GWSOm8uO7nzZ7E1Uo7lk2TzoOp3eg/formResponse",
+            {
+              method: "POST",
+              mode: "no-cors",
+              body: formData
+            }
+          );
+          window.location.href =
+            "/chamada.html?session=" + data["entry.1408099913"];
+        } catch (error) {
+          console.log(error);
+        }
       }
     </script>
   </body>

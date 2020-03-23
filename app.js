@@ -82,8 +82,8 @@ function joinSession() {
  *   3) Configure OpenVidu Web Component in your client side with the token
  */
 
-var OPENVIDU_SERVER_URL = "https://" + location.hostname + ":4443";
-var OPENVIDU_SERVER_SECRET = "MY_SECRET";
+var OPENVIDU_SERVER_URL = "https://video.corisaude.com.br:4443";
+var OPENVIDU_SERVER_SECRET = "naacaobhcarol30";
 
 function getToken(sessionName) {
   return createSession(sessionName).then(sessionId => createToken(sessionId));
