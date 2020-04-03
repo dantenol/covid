@@ -17,9 +17,9 @@
       <h1>Chat em tempo real</h1>
       <div class="content">
         <div class="messages"></div>
-        <form class="footer" onsubmit="return sendMessage();">
+        <form class="footer" onsubmit="return false">
           <input type="text" placeholder="Sua mensagem.." />
-          <button type="submit">ENVIAR</button>
+          <button onclick="send()">ENVIAR</button>
         </form>
       </div>
 

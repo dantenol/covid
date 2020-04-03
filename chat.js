@@ -202,13 +202,13 @@ function setupDataChannel() {
 
 function checkDataChannelState() {
   console.log("WebRTC channel state is:", dataChannel.readyState);
+  //TODO: abrir o chat em si. Antes deve estar em uma tela aguardando voluntário
   if (dataChannel.readyState === "open") {
     insertMessageToDOM({ content: "Você está conversando com um voluntário" });
   }
 }
 
 function insertMessageToDOM(options, isFromMe) {
-  console.log(33);
   const template = document.querySelector('template[data-template="message"]');
   const nameEl = template.content.querySelector(".message__name");
   if (options.emoji || options.name) {
@@ -233,8 +233,7 @@ function insertMessageToDOM(options, isFromMe) {
 
 const form = document.querySelector("form");
 console.log(form);
-function sendMessage() {
-  console.log(12);
+function send() {
   const input = document.querySelector('input[type="text"]');
   const value = input.value;
   input.value = "";
@@ -248,7 +247,6 @@ function sendMessage() {
   dataChannel.send(JSON.stringify(data));
 
   insertMessageToDOM(data, true);
-  return false;
 };
 
 // insertMessageToDOM({ content: "Chat URL is " + location.href });
