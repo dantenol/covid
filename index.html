@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
+    <script src="./sendForm.js"></script>
     <title>Covid</title>
   </head>
   <body>
@@ -87,25 +88,11 @@
 
       async function enviar() {
         const data = formatarObj();
-        const formData = new FormData();
-        for (var key in data) {
-          formData.append(key, data[key]);
-        }
-
-        try {
-          const res = await fetch(
-            "https://docs.google.com/forms/d/e/1FAIpQLScHyIrEsB8J2HNZ3Fq63GWSOm8uO7nzZ7E1Uo7lk2TzoOp3eg/formResponse",
-            {
-              method: "POST",
-              mode: "no-cors",
-              body: formData
-            }
-          );
-          window.location.href =
-            "chamada.html?session=" + data["entry.1408099913"];
-        } catch (error) {
-          console.log(error);
-        }
+        await enviarForm(
+          "1FAIpQLScHyIrEsB8J2HNZ3Fq63GWSOm8uO7nzZ7E1Uo7lk2TzoOp3eg",
+          data,
+          "/triagem.html#" + data["entry.1408099913"]
+        );
       }
     </script>
   </body>
