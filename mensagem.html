@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triagem</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://unpkg.com/imask"></script>
+    <script src="./sendForm.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Enviar uma mensagem</h1>
+      <div class="form box espacado">
+        <p>Seu telefone</p>
+        <input
+          type="tel"
+          id="tel"
+          name="entry.1797771205"
+          class="caixa field"
+        />
+        <p>Mensagem</p>
+        <textarea id="mensagem" rows="8" class="caixa field"></textarea>
+        <button id="send" onclick="enviar()">ENVIAR</button>
+      </div>
+    </div>
+    <script>
+      var phoneMask = IMask(document.getElementById("tel"), {
+        mask: [
+          {
+            mask: "(00) 0000-0000"
+          },
+          {
+            mask: "(00) 00000-0000"
+          }
+        ]
+      });
+
+      function formatarObj() {
+        if (phoneMask.unmaskedValue.length < 8) {
+          return alert("Telefone inválido");
+        }
+        return {
+          "entry.1797771205": phoneMask.value,
+          "entry.1068761074": document.getElementById("mensagem").value
+        };
+      }
+
+      function enviar() {
+        const data = formatarObj();
+        console.log(data);
+        for (const key in data) {
+          if (!data[key]) {
+            return alert("Você precisa preencher os campos.");
+          }
+        }
+        enviarForm(
+          "1FAIpQLSfQe6FYLZEtcYbfB9ijZq5iS-iviKaZJ89kEqwvnxhXgY3HtQ",
+          data,
+          "mensagem-fim.html"
+        );
+      }
+    </script>
+  </body>
+</html>
