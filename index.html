@@ -1,99 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMPARO | NaAção</title>
+    <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="index.css" />
-    <script src="./sendForm.js"></script>
-    <title>Covid</title>
   </head>
   <body>
-    <div id="container">
-      <img src="https://via.placeholder.com/300x120" alt="logo" />
-      <p class="hero">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque,
-        assumenda dolores?
-      </p>
-      <div class="form box">
-        <form id="form">
-          <div>
-            <input
-              id="idade"
-              name="entry.191063900"
-              class="field"
-              type="tel"
-              maxlength="3"
-              placeholder="Idade"
-            />
-            <select class="field" name="entry.803698201" name="sexo" id="sexo">
-              <option value="0">Sexo</option>
-              <option value="feminino">Feminino</option>
-              <option value="masculino">Fasculino</option>
-            </select>
+    <main>
+      <div id="hero">
+        <div class="container">
+          <div id="introText">
+            <img src="./assets/logo.svg" alt="AMPARO" />
+            <h1>Sua plataforma de apoio durante a pandemia do coronavírus</h1>
+            <p>
+              O Naação desenvolveu está ferramenta para dar apoio psicologico e
+              informativo para a população, preencha o formulário ou acesse
+              anonimamente e receba atendimento.
+            </p>
           </div>
-          <input
-            class="field"
-            type="text"
-            name="entry.25375800"
-            id="profissao"
-            placeholder="Profissão"
-          />
-          <input
-            class="field"
-            type="text"
-            name="entry.880918784"
-            id="cidade"
-            placeholder="Cidade"
-          />
-        </form>
+          <div id="cta">
+            <div id="box">
+              <div id="ctaHeader">
+                <h1>
+                  QUERO SUPORTE
+                </h1>
+                <p>Preencha os campos abaixo</p>
+              </div>
+              <div id="ctaForm">
+                <form action="javascript:void(0);" onsubmit="send()">
+                  <div class="field">
+                    <span>Nome</span>
+                    <input type="Name" name="entry.191063900" />
+                  </div>
+                  <div class="field">
+                    <span>Profissão</span>
+                    <input type="text" name="entry.25375800" />
+                  </div>
+                  <div class="field">
+                    <span>Cidade</span>
+                    <input type="text" name="entry.880918784" />
+                  </div>
+                  <input type="submit" value="Enviar" hidden />
+                </form>
+              </div>
+            </div>
+            <div id="buttons">
+              <button onclick="send()" class="button" id="send">ENVIAR</button>
+              <p id="privacy">
+                As informações serão mantidas em <span>sigilo</span>
+              </p>
+              <img src="./assets/581649-0-arrow.png" alt="Seta" id="arrow" />
+              <button class="button" id="anon" onclick="send()">ACESSO ANÔNIMO</button>
+            </div>
+          </div>
+        </div>
+        <img src="./assets/hero-wave-13.svg" alt="onda" />
       </div>
-      <button id="send" onclick="enviar()">QUERO SUPORTE</button>
-      <p class="sigilo">
-        Nenhum campo é obrigatório. As informações serão mantidas em sigilo.
-      </p>
-      <p class="textoOu">ou</p>
-      <button id="anonimo" onclick="enviar(false)">ACESSAR ANONIMAMENTE</button>
-      <div class="patrocinadores">
-        <p class="texto">Lorem é possível graças a</p>
-        <img src="https://via.placeholder.com/300x200" alt="" />
-        <img src="https://via.placeholder.com/300x200" alt="" />
-        <img src="https://via.placeholder.com/300x200" alt="" />
-        <img src="https://via.placeholder.com/300x200" alt="" />
-        <a href="/#">Quero fazer parte</a>
+      <div id="sponsors">
+        <p>APOIO INSTITUCUINAL</p>
+        <div>
+          <img src="https://via.placeholder.com/150" alt="img" />
+          <img src="https://via.placeholder.com/150" alt="img" />
+          <img src="https://via.placeholder.com/150" alt="img" />
+        </div>
       </div>
-    </div>
-    <script>
-      function makeid(length) {
-        var result = "";
-        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        var charactersLength = characters.length;
-        for (var i = 0; i < length; i++) {
-          result += characters.charAt(
-            Math.floor(Math.random() * charactersLength)
-          );
-        }
-        return result;
-      }
-
-      function formatarObj() {
-        const obj = { "entry.1408099913": makeid(6) };
-        const e = document.getElementsByClassName("field");
-        for (let i = 0; i < e.length; i++) {
-          let c = e[i],
-            n = c.getAttribute("name");
-          if (n) obj[n] = c.value;
-        }
-        return obj;
-      }
-
-      async function enviar() {
-        const data = formatarObj();
-        await enviarForm(
-          "1FAIpQLScHyIrEsB8J2HNZ3Fq63GWSOm8uO7nzZ7E1Uo7lk2TzoOp3eg",
-          data,
-          "triagem.html#" + data["entry.1408099913"]
-        );
-      }
-    </script>
+      <div id="volunteer">
+        <p>Faça parte do nosso time de voluntários</p>
+        <p class="orange">Sua ajuda é fundamental</p>
+        <p class="cta">Clique no botão abaixo e preencha o formulário</p>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdc_OKcmSfGBqj3kuER2BRg3BQXkojw5kQ3Y7QGCn7ZsNP9nw/viewform"
+          target="_blank"
+          class="button"
+          >QUERO FAZER PARTE</a
+        >
+      </div>
+      <div id="info">
+        <img src="./assets/naacao.png" alt="" />
+        <div id="details">
+          <div>
+            <h3>Endereço</h3>
+            <p>Avenida Pedro II, 1689</p>
+            <p>Belo Horizonte/MG</p>
+          </div>
+          <div>
+            <h3>Telefone</h3>
+            <p>Celular/WhatsApp</p>
+            <p>(31) 99197-3535</p>
+          </div>
+          <div>
+            <h3>Site e email</h3>
+            <p>www.naacao.com.br</p>
+            <p>contato@naacao.com.br</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      2020 &copy; Instituto NaAção. Todos os direitos reservados.
+    </footer>
   </body>
 </html>
