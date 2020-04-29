@@ -164,7 +164,9 @@ main {
 }
 
 #sponsors img {
-  padding: 8px;
+  padding: 16px;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 #sponsors p {
