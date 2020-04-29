@@ -1,75 +1,4 @@
-const possibleEmojis = [
-  "🐀",
-  "🐁",
-  "🐭",
-  "🐹",
-  "🐂",
-  "🐃",
-  "🐄",
-  "🐮",
-  "🐅",
-  "🐆",
-  "🐯",
-  "🐇",
-  "🐐",
-  "🐑",
-  "🐏",
-  "🐴",
-  "🐎",
-  "🐱",
-  "🐈",
-  "🐰",
-  "🐓",
-  "🐔",
-  "🐤",
-  "🐣",
-  "🐥",
-  "🐦",
-  "🐧",
-  "🐘",
-  "🐩",
-  "🐕",
-  "🐷",
-  "🐖",
-  "🐗",
-  "🐫",
-  "🐪",
-  "🐶",
-  "🐺",
-  "🐻",
-  "🐨",
-  "🐼",
-  "🐵",
-  "🙈",
-  "🙉",
-  "🙊",
-  "🐒",
-  "🐉",
-  "🐲",
-  "🐊",
-  "🐍",
-  "🐢",
-  "🐸",
-  "🐋",
-  "🐳",
-  "🐬",
-  "🐙",
-  "🐟",
-  "🐠",
-  "🐡",
-  "🐚",
-  "🐌",
-  "🐛",
-  "🐜",
-  "🐝",
-  "🐞"
-];
-function randomEmoji() {
-  var randomIndex = Math.floor(Math.random() * possibleEmojis.length);
-  return possibleEmojis[randomIndex];
-}
-
-const emoji = randomEmoji();
+const emoji = "🐞";
 const name = "";
 
 const chatHash = location.hash.substring(1);
@@ -84,9 +13,9 @@ let room;
 const configuration = {
   iceServers: [
     {
-      url: "stun:stun.l.google.com:19302"
-    }
-  ]
+      url: "stun:stun.l.google.com:19302",
+    },
+  ],
 };
 // RTCPeerConnection
 let pc;
@@ -94,12 +23,12 @@ let pc;
 let dataChannel;
 
 // Wait for Scaledrone signalling server to connect
-drone.on("open", error => {
+drone.on("open", (error) => {
   if (error) {
     return console.error(error);
   }
   room = drone.subscribe(roomName);
-  room.on("open", error => {
+  room.on("open", (error) => {
     if (error) {
       return console.error(error);
     }
@@ -107,11 +36,12 @@ drone.on("open", error => {
   });
   // We're connected to the room and received an array of 'members'
   // connected to the room (including us). Signaling server is ready.
-  room.on("members", members => {
+  room.on("members", (members) => {
     if (members.length >= 3) {
       return alert("A conversa está cheia");
     }
     // If we are the second user to connect to the room we will be creating the offer
+    console.log(members);
     const isOfferer = members.length === 2;
     startWebRTC(isOfferer);
   });
@@ -121,7 +51,7 @@ drone.on("open", error => {
 function sendSignalingMessage(message) {
   drone.publish({
     room: roomName,
-    message
+    message,
   });
 }
 
@@ -131,7 +61,7 @@ function startWebRTC(isOfferer) {
 
   // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
   // message to the other peer through the signaling server
-  pc.onicecandidate = event => {
+  pc.onicecandidate = (event) => {
     if (event.candidate) {
       sendSignalingMessage({ candidate: event.candidate });
     }
@@ -140,13 +70,13 @@ function startWebRTC(isOfferer) {
   if (isOfferer) {
     // If user is offerer let them create a negotiation offer and set up the data channel
     pc.onnegotiationneeded = () => {
-      pc.createOffer(localDescCreated, error => console.error(error));
+      pc.createOffer(localDescCreated, (error) => console.error(error));
     };
     dataChannel = pc.createDataChannel("chat");
     setupDataChannel();
   } else {
     // If user is not the offerer let wait for a data channel
-    pc.ondatachannel = event => {
+    pc.ondatachannel = (event) => {
       dataChannel = event.channel;
       setupDataChannel();
     };
@@ -171,10 +101,10 @@ function startListentingToSignals() {
           // When receiving an offer lets answer it
           if (pc.remoteDescription.type === "offer") {
             console.log("Answering offer");
-            pc.createAnswer(localDescCreated, error => console.error(error));
+            pc.createAnswer(localDescCreated, (error) => console.error(error));
           }
         },
-        error => console.error(error)
+        (error) => console.error(error)
       );
     } else if (message.candidate) {
       // Add the new ICE candidate to our connections remote description
@@ -187,7 +117,7 @@ function localDescCreated(desc) {
   pc.setLocalDescription(
     desc,
     () => sendSignalingMessage({ sdp: pc.localDescription }),
-    error => console.error(error)
+    (error) => console.error(error)
   );
 }
 
@@ -196,7 +126,7 @@ function setupDataChannel() {
   checkDataChannelState();
   dataChannel.onopen = checkDataChannelState;
   dataChannel.onclose = checkDataChannelState;
-  dataChannel.onmessage = event =>
+  dataChannel.onmessage = (event) =>
     insertMessageToDOM(JSON.parse(event.data), false);
 }
 
@@ -205,6 +135,9 @@ function checkDataChannelState() {
   //TODO: abrir o chat em si. Antes deve estar em uma tela aguardando voluntário
   if (dataChannel.readyState === "open") {
     insertMessageToDOM({ content: "Você está conversando com um voluntário" });
+    if (window.location.search.includes("psi")) {
+      send("Olá, gostaria de conversar com uma psicóloga.");
+    }
   }
 }
 
@@ -233,20 +166,20 @@ function insertMessageToDOM(options, isFromMe) {
 
 const form = document.querySelector("form");
 console.log(form);
-function send() {
+function send(txt) {
   const input = document.querySelector('input[type="text"]');
   const value = input.value;
   input.value = "";
 
   const data = {
     name,
-    content: value,
-    emoji
+    content: txt || value,
+    emoji,
   };
 
   dataChannel.send(JSON.stringify(data));
 
   insertMessageToDOM(data, true);
-};
+}
 
 // insertMessageToDOM({ content: "Chat URL is " + location.href });
