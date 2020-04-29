@@ -78,7 +78,7 @@ main {
 }
 
 #ctaForm {
-  padding: 48px;
+  padding: 3vw;
 }
 
 #ctaForm .field {
@@ -106,7 +106,7 @@ main {
 }
 
 #buttons {
-  padding: 0 48px;
+  padding: 0 3vw;
   position: relative;
   top: -24px;
   text-align: center;

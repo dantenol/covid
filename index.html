@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AMPARO | NaAção</title>
+    <script src="./sendForm.js"></script>
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="index.css" />
   </head>
@@ -15,8 +16,8 @@
             <img src="./assets/logo.svg" alt="AMPARO" />
             <h1>Sua plataforma de apoio durante a pandemia do coronavírus</h1>
             <p>
-              O Naação desenvolveu está ferramenta para dar apoio psicologico e
-              informativo para a população, preencha o formulário ou acesse
+              O Naação desenvolveu esta ferramenta para dar apoio psicológico e
+              informativo para a população. Preencha o formulário ou acesse
               anonimamente e receba atendimento.
             </p>
           </div>
@@ -32,15 +33,15 @@
                 <form action="javascript:void(0);" onsubmit="send()">
                   <div class="field">
                     <span>Nome</span>
-                    <input type="Name" name="entry.191063900" />
+                    <input type="Name" name="entry.537662702" />
                   </div>
                   <div class="field">
                     <span>Profissão</span>
-                    <input type="text" name="entry.25375800" />
+                    <input type="text" name="entry.428281826" />
                   </div>
                   <div class="field">
                     <span>Cidade</span>
-                    <input type="text" name="entry.880918784" />
+                    <input type="text" name="entry.883371010" />
                   </div>
                   <input type="submit" value="Enviar" hidden />
                 </form>
@@ -52,7 +53,9 @@
                 As informações serão mantidas em <span>sigilo</span>
               </p>
               <img src="./assets/581649-0-arrow.png" alt="Seta" id="arrow" />
-              <button class="button" id="anon" onclick="send()">ACESSO ANÔNIMO</button>
+              <button class="button" id="anon" onclick="send()">
+                ACESSO ANÔNIMO
+              </button>
             </div>
           </div>
         </div>
@@ -101,5 +104,38 @@
     <footer>
       2020 &copy; Instituto NaAção. Todos os direitos reservados.
     </footer>
+    <script>
+      function makeid(length) {
+        var result = "";
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+          result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+          );
+        }
+        return result;
+      }
+
+      function formatarObj() {
+        const obj = { "entry.1804636513": makeid(6) };
+        const e = document.getElementsByClassName("field");
+        for (let i = 0; i < e.length; i++) {
+          let c = e[i],
+            n = c.getAttribute("name");
+          if (n) obj[n] = c.value;
+        }
+        return obj;
+      }
+
+      async function send() {
+        const data = formatarObj();
+        await enviarForm(
+          "1FAIpQLSegsp12pQNKypdK0bSRxExyt7MlL7UcEd3qtdotXP7LBgWYdA",
+          data,
+          "triagem.html#" + data["entry.1804636513"]
+        );
+      }
+    </script>
   </body>
 </html>
