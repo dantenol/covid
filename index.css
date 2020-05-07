@@ -21,10 +21,31 @@ main {
   z-index: 1;
 }
 
-#hero > img {
-  position: absolute;
+#wave {
+  height: 0;
+}
+
+#wave > img {
+  position: relative;
+  top: -15.8vw;
+  left: 0;
+  right: 0;
+}
+
+#cta {
   width: 100%;
-  bottom: -81px;
+  height: 23vw;
+  text-align: center;
+  background-color: #ed7923;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px 5px #4e4e4e;
+  padding: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 #hero .container > div {
@@ -35,8 +56,7 @@ main {
   width: 60%;
 }
 
-#introText h1,
-#ctaHeader h1 {
+#introText h1 {
   font-family: Montserrat;
   font-weight: bold;
 }
@@ -44,72 +64,13 @@ main {
   font-size: 40px;
 }
 
-#introText p,
-#ctaHeader p {
+#introText p {
   font-family: Montserrat;
   font-weight: normal;
 }
 #introText p {
   font-size: 16px;
   line-height: 1.5em;
-}
-
-#cta {
-  z-index: 2;
-}
-
-#box {
-  background-color: white;
-  border-radius: 10px;
-  margin-top: 96px;
-  box-shadow: 0px 0px 4px 0px #7d7d7d;
-}
-
-#ctaHeader {
-  background-image: url(./assets/Bg.png);
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  text-align: center;
-  padding-top: 16px;
-  padding-bottom: 32px;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#ctaForm {
-  padding: 3vw;
-}
-
-#ctaForm .field {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 24px 4px 0 4px;
-}
-
-#ctaForm span {
-  font-family: Montserrat;
-  text-transform: uppercase;
-  color: grey;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-
-#ctaForm input,
-#ctaForm select {
-  border-radius: 4px;
-  padding: 12px;
-  font-size: 20px;
-  border: 1px solid #ededed;
-  background-color: white;
-}
-
-#buttons {
-  padding: 0 3vw;
-  position: relative;
-  top: -24px;
-  text-align: center;
 }
 
 .button {
@@ -123,39 +84,7 @@ main {
   font-family: Montserrat;
 }
 
-#send {
-  background-color: #187e7d;
-}
-
-.button:hover {
-  box-shadow: 0 0 2px 0px black;
-  cursor: pointer;
-}
-
-#privacy {
-  font-family: Segoe;
-  color: black;
-  font-size: 12px;
-  padding: 16px 0;
-}
-
-#privacy span {
-  color: red;
-}
-
-#arrow {
-  position: relative;
-  right: -56%;
-  top: -80px;
-}
-
-#anon {
-  position: relative;
-  top: -64px;
-}
-
 #sponsors {
-  margin-top: 140px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -180,12 +109,13 @@ main {
   background-image: url(./assets/world.png);
   margin: 0 15vw;
   text-align: center;
-  padding-top: 24px;
-  padding-bottom: 72px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #volunteer p {
@@ -193,6 +123,10 @@ main {
   font-size: 36px;
   font-weight: bold;
   margin: 16px 0;
+}
+
+#volunteer a {
+  text-align: center;
 }
 
 .orange {
@@ -206,10 +140,15 @@ main {
   margin-bottom: 32px;
 }
 
-#volunteer a {
-  margin-top: 32px;
+#volunteer div {
   padding: 16px;
+  width: fit-content;
   background-color: #187e7d;
+  border-radius: 8px;
+}
+
+#volunteer a {
+  color: white;
 }
 
 #info {
@@ -275,35 +214,20 @@ footer {
     font-size: 24px;
   }
 
-  #hero > img {
+  #wave > img {
     display: none;
   }
 
-  #box {
-    margin-top: 0;
-  }
-
-  #buttons {
-    padding: 0 16px;
-  }
-  #ctaForm {
-    padding: 16px;
-    padding-bottom: 48px;
-  }
-
-  #privacy {
-    margin-top: 0;
-  }
-
   #volunteer a {
-    font-size: 12px;
-  }
-
-  #sponsors {
-    margin-top: 360px;
+    font-size: 13px;
   }
 
   #details {
     flex-direction: column;
+  }
+
+  #cta {
+    height: calc(100vw - 48px);
+    font-size: 32px;
   }
 }
