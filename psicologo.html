@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Triagem</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="psicologo.css" />
+    <script src="https://unpkg.com/imask"></script>
+    <script src="./sendForm.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div class="question">
+        <h1>
+          Responda as perguntas abaixo para continuar para o amparo psicológico.
+        </h1>
+        <button onclick="next()">Começar</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Qual o seu nome completo?*
+        </p>
+        <input id="nome" type="text" name="entry.569586207" placeholder="Digite aqui..." />
+        <button onclick="next()">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          E seu CPF?*
+        </p>
+        <input type="tel" id="cpf" name="entry.1018291327" placeholder="Digite aqui..." />
+        <button onclick="next()">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Precisaremos entrar em contato com você, então informe seu número de
+          celular*
+        </p>
+        <input type="tel" id="tel" name="entry.1540718756" placeholder="Digite aqui..." />
+        <button onclick="next()">
+          Próximo
+        </button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Qual a sua profissão?
+        </p>
+        <p class="subtitle">Opcional</p>
+        <input id="profissao" name="entry.2005733590" type="text" placeholder="Digite aqui..." />
+        <button onclick="next()">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Em que cidade você mora?
+        </p>
+        <p class="subtitle">Opcional</p>
+        <input id="cidade" name="entry.1134795236" type="text" placeholder="Digite aqui..." />
+        <button onclick="next()">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          E qual bairro?
+        </p>
+        <p class="subtitle">Opcional</p>
+        <input id="bairro" name="entry.1556257597" type="text" placeholder="Digite aqui..." />
+        <button onclick="next()">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Tem mais alguma coisa para falar?
+        </p>
+        <p class="subtitle">Opcional</p>
+        <textarea id="mensagem" name="entry.635923361" placeholder="Digite aqui..."></textarea>
+        <button id="send" onclick="enviar()">Finalizar</button>
+      </div>
+    </div>
+    <script>
+      let step = 0;
+      const width = window.document.documentElement.clientHeight;
+      const questionNames = [
+        "statr",
+        "nome",
+        "cpf",
+        "tel",
+        "profissao",
+        "cidade",
+        "bairro",
+        "mensagem",
+      ];
+
+      const questionRegex = [
+        null,
+        /^.{10,}$/g,
+        /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/g,
+        /^(\(\d{2}\)\s)(\d{5}\-\d{4})$/g,
+      ];
+
+      const phoneMask = IMask(document.getElementById("tel"), {
+        mask: [
+          {
+            mask: "(00) 00000-0000",
+          },
+        ],
+      });
+
+      const cpfMask = IMask(document.getElementById("cpf"), {
+        mask: [
+          {
+            mask: "000.000.000-00",
+          },
+          {
+            mask: "000.000.000-00",
+          },
+        ],
+      });
+
+      function formatarObj() {
+        obj = {};
+        const e = document.querySelectorAll("input, textArea");
+        for (let i = 0; i < e.length; i++) {
+          let c = e[i],
+            n = c.getAttribute("name");
+          if (n) obj[n] = c.value;
+        }
+        return obj;
+      }
+
+      function enviar() {
+        const data = formatarObj();
+        console.log(data);
+        for (const key in data) {
+          if (!data[key]) {
+            return alert("Você precisa preencher os campos.");
+          }
+        }
+        enviarForm(
+          "1FAIpQLSdvavK0X21JDTgDPYIFCyQRzCFxFXC5D1A_ARhCdsf6UIBddA",
+          data,
+          "mensagem-fim.html"
+        );
+        document.getElementById("send").disabled = true;
+      }
+
+      function next() {
+        const mask = questionRegex[step];
+        if (
+          mask &&
+          !mask.test(document.getElementById(questionNames[step]).value)
+        ) {
+          alert("O campo é obrigatório!");
+          return false;
+        }
+        const els = document.querySelectorAll(".question");
+        els.forEach((e) => {
+          e.style.top = "-" + (step + 1) * 100 + "%";
+        });
+        step++;
+      }
+
+      window.addEventListener("load", function () {
+        const els = document.querySelectorAll("input");
+        els.forEach((e) =>
+          e.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              next();
+            }
+          })
+        );
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+#container {
+  width: 100%;
+  padding: 64px;
+  height: 100vh;
+  background-image: linear-gradient(45deg, #00adab 0%, #005c5a 100%);
+  color: white;
+  font-family: Montserrat;
+  overflow: hidden;
+}
+
+h1,
+p,
+a {
+  margin: 0.5em 0;
+}
+
+#container > a {
+  color: #ed7921;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+p {
+  font-size: 32px;
+}
+
+textarea {
+  resize: none;
+}
+
+.form {
+  text-align: center;
+}
+
+input,
+textarea {
+  font-size: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid darkgray;
+  margin-top: 16px;
+}
+
+button {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 8px;
+  background-color: #ed7921;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Montserrat;
+  cursor: pointer;
+  margin-top: 32px;
+}
+
+.question {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  position: relative;
+  transition: top 0.2s ease-out;
+}
+
+.question button {
+  width: 160px;
+}
+
+.title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.subtitle {
+  color: #ed7921;
+  font-size: 18px;
+  margin: 0;
+}
+
+textarea {
+  width: 100%;
+  max-width: 360px;
+}
+
+#send:disabled {
+  background-color: darkgray;
+}
+
+@media only screen and (max-width: 600px) {
+  #container {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  button {
+    padding: 8px;
+    font-size: 20px;
+  }
+}
