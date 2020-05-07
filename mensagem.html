@@ -14,6 +14,13 @@
     <div id="container">
       <h1>Enviar uma mensagem</h1>
       <div class="form">
+        <p>Seu nome</p>
+        <input
+          type="text"
+          id="name"
+          name="entry.2024374986"
+          class="caixa field"
+        />
         <p>Seu telefone</p>
         <input
           type="tel"
@@ -43,6 +50,7 @@
           throw alert("Telefone inválido");
         }
         return {
+          "entry.2024374986": document.getElementById("name").value,
           "entry.1797771205": phoneMask.value,
           "entry.1068761074": document.getElementById("mensagem").value,
         };
