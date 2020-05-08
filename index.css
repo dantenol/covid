@@ -218,6 +218,10 @@ footer {
     display: none;
   }
 
+  #volunteer {
+    margin-top: 72px;
+  }
+
   #volunteer a {
     font-size: 13px;
   }
