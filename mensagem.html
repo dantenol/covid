@@ -28,7 +28,7 @@
           name="entry.1797771205"
           class="caixa field"
         />
-        <p>Mensagem</p>
+        <p>No que precisa de ajuda?</p>
         <textarea id="mensagem" rows="8" class="caixa field"></textarea>
         <button id="send" onclick="enviar()">ENVIAR</button>
       </div>
@@ -69,6 +69,7 @@
           data,
           "mensagem-fim.html"
         );
+        document.getElementById("send").disabled = true;
       }
     </script>
   </body>
