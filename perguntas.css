@@ -37,12 +37,15 @@ textarea {
 }
 
 input,
+select,
 textarea {
   font-size: 20px;
   padding: 12px;
   border-radius: 8px;
   border: 2px solid darkgray;
   margin-top: 16px;
+  min-width: 256px;
+  background-color: white;
 }
 
 button {
@@ -80,7 +83,7 @@ button {
 }
 
 .subtitle {
-  color: #ed7921;
+  color: #ffbf8f;
   font-size: 18px;
   margin: 0;
 }
