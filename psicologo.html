@@ -6,30 +6,35 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Triagem</title>
     <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="psicologo.css" />
+    <link rel="stylesheet" href="perguntas.css" />
     <script src="https://unpkg.com/imask"></script>
     <script src="./sendForm.js"></script>
   </head>
   <body>
     <div id="container">
       <div class="question">
-        <h1>
-          Responda as perguntas abaixo para continuar para o amparo psicológico.
-        </h1>
-        <button onclick="next()">Começar</button>
-      </div>
-      <div class="question">
         <p class="title">
           Qual o seu nome completo?*
         </p>
-        <input id="nome" type="text" name="entry.569586207" placeholder="Digite aqui..." />
+        <input
+          id="nome"
+          type="text"
+          name="entry.569586207"
+          placeholder="Digite aqui..."
+        />
         <button onclick="next()">Próximo</button>
       </div>
       <div class="question">
         <p class="title">
-          E seu CPF?*
+          E seu CPF?
         </p>
-        <input type="tel" id="cpf" name="entry.1018291327" placeholder="Digite aqui..." />
+        <p class="subtitle">Opcional</p>
+        <input
+          type="tel"
+          id="cpf"
+          name="entry.1018291327"
+          placeholder="Digite aqui..."
+        />
         <button onclick="next()">Próximo</button>
       </div>
       <div class="question">
@@ -37,7 +42,12 @@
           Precisaremos entrar em contato com você, então informe seu número de
           celular*
         </p>
-        <input type="tel" id="tel" name="entry.1540718756" placeholder="Digite aqui..." />
+        <input
+          type="tel"
+          id="tel"
+          name="entry.1540718756"
+          placeholder="Digite aqui..."
+        />
         <button onclick="next()">
           Próximo
         </button>
@@ -47,7 +57,12 @@
           Qual a sua profissão?
         </p>
         <p class="subtitle">Opcional</p>
-        <input id="profissao" name="entry.2005733590" type="text" placeholder="Digite aqui..." />
+        <input
+          id="profissao"
+          name="entry.2005733590"
+          type="text"
+          placeholder="Digite aqui..."
+        />
         <button onclick="next()">Próximo</button>
       </div>
       <div class="question">
@@ -55,7 +70,12 @@
           Em que cidade você mora?
         </p>
         <p class="subtitle">Opcional</p>
-        <input id="cidade" name="entry.1134795236" type="text" placeholder="Digite aqui..." />
+        <input
+          id="cidade"
+          name="entry.1134795236"
+          type="text"
+          placeholder="Digite aqui..."
+        />
         <button onclick="next()">Próximo</button>
       </div>
       <div class="question">
@@ -63,7 +83,48 @@
           E qual bairro?
         </p>
         <p class="subtitle">Opcional</p>
-        <input id="bairro" name="entry.1556257597" type="text" placeholder="Digite aqui..." />
+        <input
+          id="bairro"
+          name="entry.1556257597"
+          type="text"
+          placeholder="Digite aqui..."
+        />
+        <button onclick="next()">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Faz ou já fez acompanhamento psicológico?
+        </p>
+        <p class="subtitle">Opcional</p>
+        <select name="entry.824072722">
+          <option value=""></option>
+          <option value="sim">SIM</option>
+          <option value="não">NÃO</option>
+        </select>
+        <button onclick="next()">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Faz uso de medicamentos controlados?
+        </p>
+        <p class="subtitle">Opcional</p>
+        <select name="entry.2120206310">
+          <option value=""></option>
+          <option value="sim">SIM</option>
+          <option value="não">NÃO</option>
+        </select>
+        <button onclick="next()">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Faz ou já fez acompanhamento psiquiátrico?
+        </p>
+        <p class="subtitle">Opcional</p>
+        <select name="entry.222374219">
+          <option value=""></option>
+          <option value="sim">SIM</option>
+          <option value="não">NÃO</option>
+        </select>
         <button onclick="next()">Próximo</button>
       </div>
       <div class="question">
@@ -71,7 +132,11 @@
           Tem mais alguma coisa para falar?
         </p>
         <p class="subtitle">Opcional</p>
-        <textarea id="mensagem" name="entry.635923361" placeholder="Digite aqui..."></textarea>
+        <textarea
+          id="mensagem"
+          name="entry.635923361"
+          placeholder="Digite aqui..."
+        ></textarea>
         <button id="send" onclick="enviar()">Finalizar</button>
       </div>
     </div>
@@ -79,7 +144,6 @@
       let step = 0;
       const width = window.document.documentElement.clientHeight;
       const questionNames = [
-        "statr",
         "nome",
         "cpf",
         "tel",
@@ -90,9 +154,8 @@
       ];
 
       const questionRegex = [
-        null,
         /^.{10,}$/g,
-        /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/g,
+        null,
         /^(\(\d{2}\)\s)(\d{5}\-\d{4})$/g,
       ];
 
@@ -117,7 +180,7 @@
 
       function formatarObj() {
         obj = {};
-        const e = document.querySelectorAll("input, textArea");
+        const e = document.querySelectorAll("input, textarea, select");
         for (let i = 0; i < e.length; i++) {
           let c = e[i],
             n = c.getAttribute("name");
@@ -128,17 +191,12 @@
 
       function enviar() {
         const data = formatarObj();
-        console.log(data);
-        for (const key in data) {
-          if (!data[key]) {
-            return alert("Você precisa preencher os campos.");
-          }
-        }
         enviarForm(
           "1FAIpQLSdvavK0X21JDTgDPYIFCyQRzCFxFXC5D1A_ARhCdsf6UIBddA",
           data,
           "mensagem-fim.html"
         );
+        alert("Recebemos o seu formulário e em breve entraremos em contato!");
         document.getElementById("send").disabled = true;
       }
 
