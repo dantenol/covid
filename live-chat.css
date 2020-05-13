@@ -1,9 +1,4 @@
 #container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   width: 100%;
   padding: 64px;
   min-height: 100vh;
@@ -12,16 +7,14 @@
   font-family: Montserrat;
 }
 
+h1 {
+  width: calc(100vw - 500px);
+}
+
 h1,
 p,
 a {
   margin: 0.5em 0;
-}
-
-#container > a {
-  color: #ed7921;
-  font-weight: bold;
-  font-size: xx-large;
 }
 
 h1 {
@@ -32,24 +25,9 @@ p {
   font-size: 32px;
 }
 
-textarea {
-  resize: none;
-}
-
-.form {
-  text-align: center;
-}
-
-input,
-textarea {
-  font-size: 16px;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid darkgray;
-}
-
 button {
-  width: 100%;
+  width: 400px;
+  max-width: 80%;
   min-height: 48px;
   border-radius: 4px;
   background-color: #ed7921;
@@ -57,15 +35,17 @@ button {
   font-size: 24px;
   font-weight: bold;
   font-family: Montserrat;
+  cursor: pointer;
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 32px;
+  #text {
+    width: 100%
   }
 
-  #container {
-    padding: 16px;
+  h1 {
+    font-size: 32px;
   }
 
   p {
@@ -73,9 +53,4 @@ button {
     text-align: center;
   }
 
-  button {
-    padding: 8px;
-    font-size: 20px;
-    margin-top: 8x;
-  }
 }
