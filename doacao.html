@@ -166,13 +166,14 @@
         <button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">Tipo de doação</p>
+        <p class="title">Do que você precisa?<span>*</span></p>
         <div class="multipleChoiceContainer">
           <input
             type="checkbox"
             value="Cesta_básica"
             name="entry.1896023146"
             id="1896023146.Cesta_básica"
+            data-required="true"
           />
           <label for="1896023146.Cesta_básica">Cesta básica</label>
           <br />
@@ -258,6 +259,15 @@
           <label for="1896023146.Itens_de_proteçao_pessoal"
             >Itens de proteção</label
           >
+          <br />
+          <br />
+          <input
+            type="checkbox"
+            value="Outros"
+            name="entry.1896023146"
+            id="1896023146.Outros"
+          />
+          <label for="1896023146.Outros">Outros</label>
         </div>
         <button class="next">Próximo</button>
       </div>
@@ -362,7 +372,7 @@
             "Itens de higiene",
             "Itens de proteçao pessoal",
           ],
-          required: false,
+          required: true,
           name: "entry.1896023146",
         },
         {
@@ -395,17 +405,30 @@
             regex = new RegExp(e.getAttribute("data-regex"));
             regexMatch = false;
           }
-          if (e.value) hasValue = true;
+          if (e.value && (e.type !== "checkbox" && e.type !== "radio")) hasValue = true;
+          if (e.checked && (e.type === "checkbox" || e.type === "radio")) hasValue = true;
           if (regex && regex.test(e.value)) regexMatch = true;
         });
 
         return Boolean(regexMatch && (!isRequired || (isRequired && hasValue)));
       }
 
+      function toggleNext(bool) {
+        const els = document.getElementsByClassName("next");
+        let i = 0;
+        while (i < els.length) {
+          const el = els[i];
+          el.disabled = !bool;
+          i++;
+        }
+      }
+
       function next() {
+        toggleNext(false);
         const canPass = checkFilled();
         if (!canPass) {
           alert("Você deve responder propriamente para continuar!");
+          toggleNext(true);
           return false;
         }
         const els = document.querySelectorAll(".question");
@@ -413,6 +436,7 @@
           e.style.top = "-" + (step + 1) * 100 + "vh";
         });
         step++;
+        toggleNext(true);
       }
 
       function listCheckbox(obj, name, val) {

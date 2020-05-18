@@ -46,6 +46,10 @@ textarea {
   background-color: white;
 }
 
+button:disabled {
+  background-color: darkgray;
+}
+
 button {
   width: 100%;
   min-height: 48px;
