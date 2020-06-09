@@ -9,7 +9,8 @@ main {
   padding-top: 100px;
   width: 100%;
   background-image: linear-gradient(45deg, #00adab 0%, #005c5a 100%);
-  height: 800px;
+  min-height: 800px;
+  padding-bottom: 64px;
 }
 
 #hero .container {
@@ -39,6 +40,7 @@ main {
   background-color: #ed7923;
   border-radius: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 10px 5px #4e4e4e;
@@ -46,6 +48,10 @@ main {
   color: white;
   font-weight: bold;
   font-size: 24px;
+}
+
+#cta small {
+  font-size: 20px;
 }
 
 #hero .container > div {
