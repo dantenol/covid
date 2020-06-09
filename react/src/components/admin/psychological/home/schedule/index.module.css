@@ -1,0 +1,16 @@
+.container input {
+  margin: 8px 0;
+}
+
+.container button {
+  float: right;
+  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #EF7922;
+  color: white;
+  cursor: pointer;
+  width: 120px;
+}

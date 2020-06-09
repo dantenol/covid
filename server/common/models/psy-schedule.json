@@ -1,0 +1,37 @@
+{
+  "name": "psySchedule",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "createdAt": {
+      "type": "date",
+      "required": true
+    },
+    "schedule": {
+      "type": "date",
+      "required": true
+    },
+    "done": {
+      "required": false,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "psychologist": {
+      "type": "belongsTo",
+      "model": "agent",
+      "foreignKey": "psychologistId"
+    },
+    "person": {
+      "type": "belongsTo",
+      "model": "person",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

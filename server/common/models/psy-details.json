@@ -1,0 +1,36 @@
+{
+  "name": "psyDetails",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "status": {
+      "type": "string",
+      "default": "pending"
+    },
+    "urgency": {
+      "type": "number",
+      "default": 1
+    },
+    "modifiedAt": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "psyRequest": {
+      "type": "belongsTo",
+      "model": "psyRequest",
+      "foreignKey": ""
+    },
+    "psychologist": {
+      "type": "belongsTo",
+      "model": "agent",
+      "foreignKey": "psychologistId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

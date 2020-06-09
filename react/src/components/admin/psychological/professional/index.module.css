@@ -1,0 +1,55 @@
+.list {
+  width: 100%;
+}
+
+.entry {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #c7c7c7;
+  border-top: 1px solid #EF7922;
+}
+
+.entry p {
+  width: 120px;
+}
+
+.entry:nth-child(odd) {
+  background-color: #e6e6e6;
+}
+
+.entry:last-child {
+  border-bottom: 1px solid #EF7922;
+}
+
+.button {
+  float: right;
+  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #EF7922;
+  color: white;
+  cursor: pointer;
+  width: 80px;
+}
+
+.times {
+  text-align: center;
+  overflow: auto;
+}
+
+.entry button {
+  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #EF7922;
+  color: white;
+  cursor: pointer;
+  width: 32px;
+}
