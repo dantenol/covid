@@ -21,6 +21,8 @@ h1 {
 
 p {
   font-size: 32px;
+  text-transform: uppercase;
+  color: #ff3737;
 }
 
 a {
