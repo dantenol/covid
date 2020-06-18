@@ -160,7 +160,7 @@ const PsychologicalHome = () => {
 
   return (
     <div>
-      <Header user={localStorage.user} />
+      <Header />
       <Modal open={modal === "patient"} onClose={() => setModal(false)}>
         <PatientInfo data={selectedPatient} />
       </Modal>

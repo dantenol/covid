@@ -5,8 +5,8 @@ import { useHistory } from "react-router-dom";
 import { url } from "../../../../connector.json";
 import styles from "./header.module.css";
 
-const Header = ({ user }) => {
-  const { fullName, teams } = JSON.parse(user);
+const Header = () => {
+  const { fullName, teams } = JSON.parse(localStorage.user);
   const history = useHistory();
 
   const logout = async () => {
