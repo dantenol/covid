@@ -236,6 +236,20 @@ input[type="checkbox"]:not(.switch):checked {
   --r: 43deg;
 }
 
+
+#gpsButton img {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.question button#gpsButton {
+  background-color: cornflowerblue;
+  font-size: 16px;
+  font-weight: normal;
+  width: 200px;
+  padding: 8px;
+}
+
 @media only screen and (max-width: 600px) {
   .question {
     width: 100%;

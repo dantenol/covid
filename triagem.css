@@ -20,9 +20,15 @@ h1 {
 }
 
 p {
+  color: white;
   font-size: 32px;
-  text-transform: uppercase;
-  color: #ff3737;
+  font-weight: bold;
+  font-family: Montserrat;
+}
+
+.disclamer {
+  font-weight: lighter;
+  font-size: 16px;
 }
 
 a {
