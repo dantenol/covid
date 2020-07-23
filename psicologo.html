@@ -26,9 +26,8 @@
       </div>
       <div class="question">
         <p class="title">
-          E seu CPF?
+          E seu CPF?*
         </p>
-        <p class="subtitle">Opcional</p>
         <input
           type="tel"
           id="cpf"
@@ -129,9 +128,8 @@
       </div>
       <div class="question">
         <p class="title">
-          Tem mais alguma coisa para falar?
+          Tem mais alguma coisa para falar?*
         </p>
-        <p class="subtitle">Opcional</p>
         <textarea
           id="mensagem"
           name="entry.635923361"
@@ -150,13 +148,23 @@
         "profissao",
         "cidade",
         "bairro",
+        "psic",
+        "medic",
+        "psiq",
         "mensagem",
       ];
 
       const questionRegex = [
         /^.{10,}$/g,
-        null,
+        /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/g,
         /^(\(\d{2}\)\s)(\d{5}\-\d{4})$/g,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        /^.{3,}$/g,
       ];
 
       const phoneMask = IMask(document.getElementById("tel"), {
@@ -190,6 +198,15 @@
       }
 
       function enviar() {
+        const mask = questionRegex[step];
+        if (
+          mask &&
+          !mask.test(document.getElementById(questionNames[step]).value)
+        ) {
+          alert("O campo é obrigatório!");
+          return false;
+        }
+
         const data = formatarObj();
         enviarForm(
           "1FAIpQLSdvavK0X21JDTgDPYIFCyQRzCFxFXC5D1A_ARhCdsf6UIBddA",
