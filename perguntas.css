@@ -113,6 +113,7 @@ textarea {
 .multipleChoiceContainer {
   max-height: calc(100vh - 250px);
   overflow-x: hidden;
+  padding-bottom: 4px;
   overflow-y: auto;
 }
 
@@ -236,6 +237,26 @@ input[type="checkbox"]:not(.switch):checked {
   --r: 43deg;
 }
 
+input[type="radio"] {
+  border-radius: 50%;
+  padding: 0;
+}
+
+input[type="radio"]:after {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: var(--active-inner);
+  opacity: 0;
+  transform: scale(var(--s, 0.7));
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+input[type="radio"]:checked {
+  --s: 0.5;
+}
 
 #gpsButton img {
   width: 20px;

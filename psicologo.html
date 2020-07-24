@@ -1,190 +1,387 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <title>Triagem</title>
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="perguntas.css" />
+    <title>Form</title>
     <script src="https://unpkg.com/imask"></script>
     <script src="./sendForm.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="perguntas.css" />
   </head>
+
   <body>
     <div id="container">
       <div class="question">
-        <p class="title">
-          Qual o seu nome completo?*
-        </p>
+        <p class="title">Qual o seu nome completo?<span>*</span></p>
         <input
-          id="nome"
           type="text"
           name="entry.569586207"
+          id="569586207"
           placeholder="Digite aqui..."
-        />
-        <button onclick="next()">Próximo</button>
+          data-required="true"
+        /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">
-          E seu CPF?*
-        </p>
+        <p class="title">E o seu CPF?<span>*</span></p>
+        <p class="subtitle">Será usado apenas para verificação de dados</p>
         <input
-          type="tel"
-          id="cpf"
+          type="text"
           name="entry.1018291327"
+          id="1018291327"
           placeholder="Digite aqui..."
-        />
-        <button onclick="next()">Próximo</button>
+          data-required="true"
+          data-regex="^\d{3}\.\d{3}\.\d{3}\-\d{2}$"
+          data-mask="000.000.000-00"
+        /><button class="next">Próximo</button>
       </div>
       <div class="question">
         <p class="title">
-          Precisaremos entrar em contato com você, então informe seu número de
-          celular*
+          Vamos entrar em contato por WhatsApp, então precisamos do seu
+          telefone<span>*</span>
         </p>
         <input
-          type="tel"
-          id="tel"
+          type="text"
           name="entry.1540718756"
+          id="1540718756"
           placeholder="Digite aqui..."
-        />
-        <button onclick="next()">
-          Próximo
-        </button>
+          data-regex="^(\(\d{2}\)\s)(\d{5}\-\d{4})$"
+          data-mask="(00) 00000-0000"
+          data-required="true"
+        /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">
-          Qual a sua profissão?
-        </p>
-        <p class="subtitle">Opcional</p>
+        <p class="title">Profissão</p>
         <input
-          id="profissao"
+          type="text"
           name="entry.2005733590"
-          type="text"
+          id="2005733590"
           placeholder="Digite aqui..."
-        />
-        <button onclick="next()">Próximo</button>
+        /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">
-          Em que cidade você mora?
-        </p>
-        <p class="subtitle">Opcional</p>
+        <p class="title">Cidade<span>*</span></p>
         <input
-          id="cidade"
+          type="text"
           name="entry.1134795236"
-          type="text"
+          id="1134795236"
           placeholder="Digite aqui..."
-        />
-        <button onclick="next()">Próximo</button>
+          data-required="true"
+        /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">
-          E qual bairro?
-        </p>
-        <p class="subtitle">Opcional</p>
+        <p class="title">Bairro<span>*</span></p>
         <input
-          id="bairro"
-          name="entry.1556257597"
           type="text"
+          name="entry.1556257597"
+          id="1556257597"
           placeholder="Digite aqui..."
-        />
-        <button onclick="next()">Próximo</button>
+          data-required="true"
+        /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">
-          Faz ou já fez acompanhamento psicológico?
-        </p>
-        <p class="subtitle">Opcional</p>
-        <select name="entry.824072722">
-          <option value=""></option>
-          <option value="sim">SIM</option>
-          <option value="não">NÃO</option>
-        </select>
-        <button onclick="next()">Próximo</button>
+        <p class="title">Sua idade:<span>*</span></p>
+        <input
+          type="number"
+          name="entry.1352949090"
+          id="1352949090"
+          placeholder="Digite aqui..."
+          data-required="true"
+        /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">
-          Faz uso de medicamentos controlados?
-        </p>
-        <p class="subtitle">Opcional</p>
-        <select name="entry.2120206310">
-          <option value=""></option>
-          <option value="sim">SIM</option>
-          <option value="não">NÃO</option>
-        </select>
-        <button onclick="next()">Próximo</button>
+        <p class="title">Sexo</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="radio"
+            value="Feminino"
+            name="entry.1060671630"
+            id="1060671630.Feminino"
+          /><label for="1060671630.Feminino">Feminino</label><br /><br /><input
+            type="radio"
+            value="Masculino"
+            name="entry.1060671630"
+            id="1060671630.Masculino"
+          /><label for="1060671630.Masculino">Masculino</label>
+        </div>
+        <button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">
-          Faz ou já fez acompanhamento psiquiátrico?
-        </p>
-        <p class="subtitle">Opcional</p>
-        <select name="entry.222374219">
-          <option value=""></option>
-          <option value="sim">SIM</option>
-          <option value="não">NÃO</option>
-        </select>
-        <button onclick="next()">Próximo</button>
+        <p class="title">Situação<span>*</span></p>
+        <div class="multipleChoiceContainer" data-required="true">
+          <input
+            type="radio"
+            value="Empregado(a)"
+            name="entry.256262728"
+            id="256262728.Empregado(a)"
+          /><label for="256262728.Empregado(a)">Empregado(a)</label
+          ><br /><br /><input
+            type="radio"
+            value="Desempregado(a)"
+            name="entry.256262728"
+            id="256262728.Desempregado(a)"
+          /><label for="256262728.Desempregado(a)">Desempregado(a)</label>
+        </div>
+        <button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">
-          Tem mais alguma coisa para falar?*
-        </p>
+        <p class="title">Faz ou já fez acompanhamento psicológico?</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="radio"
+            value="Sim"
+            name="entry.824072722"
+            id="824072722.Sim"
+          /><label for="824072722.Sim">Sim</label><br /><br /><input
+            type="radio"
+            value="Não"
+            name="entry.824072722"
+            id="824072722.Não"
+          /><label for="824072722.Não">Não</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Toma medicamentos psiquiátricos?</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="radio"
+            value="Sim"
+            name="entry.2120206310"
+            id="2120206310.Sim"
+          /><label for="2120206310.Sim">Sim</label><br /><br /><input
+            type="radio"
+            value="Não"
+            name="entry.2120206310"
+            id="2120206310.Não"
+          /><label for="2120206310.Não">Não</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Faz ou já fez acompanhamento psiquiátrico?</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="radio"
+            value="Sim"
+            name="entry.222374219"
+            id="222374219.Sim"
+          /><label for="222374219.Sim">Sim</label><br /><br /><input
+            type="radio"
+            value="Não"
+            name="entry.222374219"
+            id="222374219.Não"
+          /><label for="222374219.Não">Não</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Deixe uma mensagem<span>*</span></p>
         <textarea
-          id="mensagem"
           name="entry.635923361"
+          id="635923361"
           placeholder="Digite aqui..."
-        ></textarea>
-        <button id="send" onclick="enviar()">Finalizar</button>
+          data-required="true"
+        ></textarea
+        ><br /><button id="send">Finalizar</button>
       </div>
     </div>
     <script>
       let step = 0;
-      const width = window.document.documentElement.clientHeight;
-      const questionNames = [
-        "nome",
-        "cpf",
-        "tel",
-        "profissao",
-        "cidade",
-        "bairro",
-        "psic",
-        "medic",
-        "psiq",
-        "mensagem",
+      const build = [
+        {
+          title: "Qual o seu nome completo? *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.569586207",
+        },
+        {
+          title: "E o seu CPF? *",
+          subtitle: "Será usado apenas para verificação de dados",
+          type: "text",
+          required: true,
+          name: "entry.1018291327",
+        },
+        {
+          title:
+            "Vamos entrar em contato por WhatsApp, então precisamos do seu telefome *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.1540718756",
+        },
+        {
+          title: "Profissão",
+          subtitle: "",
+          type: "text",
+          required: false,
+          name: "entry.2005733590",
+        },
+        {
+          title: "Cidade *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.1134795236",
+        },
+        {
+          title: "Bairro *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.1556257597",
+        },
+        {
+          title: "Sua idade: *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.1352949090",
+        },
+        {
+          title: "Sexo",
+          subtitle: "",
+          type: "radio",
+          options: ["Feminino", "Masculino"],
+          required: false,
+          name: "entry.1060671630",
+        },
+        {
+          title: "Situação *",
+          subtitle: "",
+          type: "radio",
+          options: ["Empregado(a)", "Desempregado(a)"],
+          required: true,
+          name: "entry.256262728",
+        },
+        {
+          title: "Fazia atendimento psicológico?",
+          subtitle: "",
+          type: "radio",
+          options: ["Sim", "Não"],
+          required: false,
+          name: "entry.824072722",
+        },
+        {
+          title: "Toma medicamentos psiquiátricos?",
+          subtitle: "",
+          type: "radio",
+          options: ["Sim", "Não"],
+          required: false,
+          name: "entry.2120206310",
+        },
+        {
+          title: "Faz acompanhamento psiquiátrico?",
+          subtitle: "",
+          type: "radio",
+          options: ["Sim", "Não"],
+          required: false,
+          name: "entry.222374219",
+        },
+        {
+          title: "Deixe uma mensagem *",
+          subtitle: "",
+          type: "textarea",
+          required: true,
+          name: "entry.635923361",
+        },
       ];
+      const hasMessage = 0;
+      const height = window.document.documentElement.clientHeight;
 
-      const questionRegex = [
-        /^.{10,}$/g,
-        /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/g,
-        /^(\(\d{2}\)\s)(\d{5}\-\d{4})$/g,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        /^.{3,}$/g,
-      ];
+      function checkFilled() {
+        let i = step;
+        if (hasMessage && i === 0) {
+          return true;
+        } else if (hasMessage) {
+          i--;
+        }
+        let name = build[i].name;
+        let el = document.getElementsByName(name);
 
-      const phoneMask = IMask(document.getElementById("tel"), {
-        mask: [
-          {
-            mask: "(00) 00000-0000",
-          },
-        ],
-      });
+        let hasValue = false;
+        let isRequired = false;
+        let regex = null;
+        let regexMatch = true;
+        el.forEach((e) => {
+          if (e.getAttribute("data-required") === "true") isRequired = true;
+          if (e.getAttribute("data-regex")) {
+            regex = new RegExp(e.getAttribute("data-regex"));
+            regexMatch = false;
+          }
+          if (e.value) hasValue = true;
+          if (regex && regex.test(e.value)) regexMatch = true;
+        });
 
-      const cpfMask = IMask(document.getElementById("cpf"), {
-        mask: [
-          {
-            mask: "000.000.000-00",
-          },
-          {
-            mask: "000.000.000-00",
-          },
-        ],
-      });
+        return Boolean(regexMatch && (!isRequired || (isRequired && hasValue)));
+      }
+
+      function next() {
+        const canPass = checkFilled();
+        if (!canPass) {
+          alert("Você deve responder propriamente para continuar!");
+          return false;
+        }
+        const els = document.querySelectorAll(".question");
+        els.forEach((e) => {
+          e.style.top = "-" + (step + 1) * 100 + "%";
+        });
+        step++;
+      }
+
+      function listCheckbox(obj, name, val) {
+        console.log(obj, name, val);
+        if (!obj[name]) {
+          obj[name] = [val];
+        } else {
+          obj[name].push(val);
+        }
+        console.log(obj);
+        return obj;
+      }
+
+      function formatObj() {
+        obj = {};
+        const e = document.querySelectorAll("input, textarea, select");
+        for (let i = 0; i < e.length; i++) {
+          let c = e[i],
+            n = c.getAttribute("name");
+          if (n) {
+            if (
+              ((c.type === "checkbox" || c.type === "radio") && c.checked) ||
+              (c.type !== "checkbox" && c.type !== "radio" && obj[n])
+            ) {
+              obj = listCheckbox(obj, n, c.value);
+            } else if (c.type !== "checkbox" && c.type !== "radio") {
+              obj[n] = c.value;
+            }
+          }
+        }
+        const linearObj = {};
+        Object.keys(obj).forEach((k) => {
+          linearObj[k] = String(obj[k]);
+        });
+
+        console.log(linearObj);
+        return linearObj;
+      }
+
+      function checkData(data) {
+        Object.keys(data).forEach((entry, i) => {
+          if (build[i].required && !data[entry]) {
+            highlightRequired(entry);
+            alert("Campo obrigatório!");
+            throw "Campo obrigatório";
+          }
+        });
+      }
+
+      function highlightRequired(name) {
+        document.getElementsByName(name).forEach((e) => {
+          e.classList.add("blink");
+          setTimeout(e.classList.remove("blink"), 4000);
+        });
+      }
 
       function formatarObj() {
         obj = {};
@@ -198,11 +395,7 @@
       }
 
       function enviar() {
-        const mask = questionRegex[step];
-        if (
-          mask &&
-          !mask.test(document.getElementById(questionNames[step]).value)
-        ) {
+        if (!document.getElementById("635923361").value) {
           alert("O campo é obrigatório!");
           return false;
         }
@@ -217,31 +410,93 @@
         document.getElementById("send").disabled = true;
       }
 
-      function next() {
-        const mask = questionRegex[step];
-        if (
-          mask &&
-          !mask.test(document.getElementById(questionNames[step]).value)
-        ) {
-          alert("O campo é obrigatório!");
-          return false;
-        }
-        const els = document.querySelectorAll(".question");
-        els.forEach((e) => {
-          e.style.top = "-" + (step + 1) * 100 + "%";
+      function resetForm() {
+        document.querySelectorAll("[name]").forEach((e) => {
+          e.value = null;
+          e.checked = false;
         });
-        step++;
+
+        step = 0;
+
+        document.querySelectorAll(".question").forEach((e) => {
+          e.style.top = "";
+        });
       }
 
-      window.addEventListener("load", function () {
-        const els = document.querySelectorAll("input");
-        els.forEach((e) =>
-          e.addEventListener("keypress", function (e) {
-            if (e.key === "Enter") {
-              next();
-            }
-          })
+      function save() {
+        const data = formatObj();
+        checkData(data);
+        const id = "answer." + Math.round(Math.random() * (9999 - 1000) + 1000);
+        localStorage.setItem(id, JSON.stringify(data));
+        alert(
+          "Suas respostas foram salvas. Não esqueça de envia-las mais tarde!"
         );
+        resetForm();
+      }
+
+      function submit() {
+        if (false) {
+          save();
+        } else {
+          enviar();
+        }
+      }
+
+      window.document.querySelectorAll("button.next").forEach((b) => {
+        b.addEventListener("click", next, false);
+      });
+
+      window.document
+        .getElementById("send")
+        .addEventListener("click", submit, false);
+
+      window.addEventListener("load", function () {
+        if (true) {
+          document.querySelectorAll("input").forEach((e) =>
+            e.addEventListener("keypress", function (e) {
+              if (e.key === "Enter") {
+                next();
+              }
+            })
+          );
+
+          document.querySelectorAll("input[type='radio']").forEach((e) => {
+            e.addEventListener(
+              "click",
+              () => {
+                let thisStep = step;
+                setTimeout(() => {
+                  if (step === thisStep) {
+                    console.log(1212);
+                    next();
+                  }
+                }, 200);
+              },
+              false
+            );
+          });
+        }
+
+        const masks = document.querySelectorAll("[data-mask]");
+
+        if (masks.length) {
+          let script = "";
+          masks.forEach((el) => {
+            const id = el.id;
+            const mask = el.getAttribute("data-mask");
+            console.log(id, mask);
+            script += `const Mask_${id} = IMask(document.getElementById("${id}"), {
+          mask: [
+            {
+              mask: "${mask}",
+            },
+          ],
+        });`;
+          });
+          const scr = document.createElement("script");
+          scr.innerHTML = script;
+          window.document.body.appendChild(scr);
+        }
       });
     </script>
   </body>
