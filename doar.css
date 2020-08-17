@@ -1,0 +1,102 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 16px 10vw;
+  min-height: 100vh;
+  height: 100%;
+  background-image: linear-gradient(45deg, #00adab 0%, #005c5a 100%);
+  color: white;
+  font-family: Montserrat;
+}
+
+h1,
+p,
+a {
+  margin: 0.5em 0;
+}
+
+#container > a {
+  color: #ed7921;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+p {
+  font-size: 24px;
+}
+
+textarea {
+  resize: none;
+}
+
+.form {
+  text-align: center;
+}
+
+button {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 4px;
+  background-color: #ed7921;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Montserrat;
+}
+
+.orange {
+  color: #ed7921;
+}
+
+.monthly {
+  padding: 8px 24px;
+  background-color: #ed7921;
+  border: 1px solid #ff5722;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 24px;
+}
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.row > div {
+  flex: 1;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  #container {
+    padding: 16px;
+  }
+
+  p {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  button {
+    padding: 8px;
+    font-size: 20px;
+    margin-top: 8x;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}

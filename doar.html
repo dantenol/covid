@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>AMPARO</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="doar.css" />
+</head>
+
+<body>
+  <div id="container">
+    <h1>Precisamos de sua ajuda para continuar nosso trabalho!</h1>
+    <div class="row">
+      <div>
+        <h2 class="orange">Transferência bancária</h2>
+        <p>
+          <b>Instituto NAAÇÃO</b>
+        </p>
+        <p>
+          <b>CNPJ 30.220.337/0001-75</b>
+        </p>
+        <p>Banco Inter (077)</p>
+        <p>Agência 0001-9</p>
+        <p>Conta corrente 1314738-2</p>
+      </div>
+      <div>
+        <h2 class="orange">Pagamento online</h2>
+        <p>
+          <b>PagSeguro</b>
+        </p>
+        <div>
+          <form action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post">
+            <input type="hidden" name="currency" value="BRL" />
+            <input type="hidden" name="receiverEmail" value="contato@naacao.com.br" />
+            <input type="hidden" name="iot" value="button" />
+            <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/doacoes/209x48-doar-assina.gif"
+              name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+          </form>
+        </div>
+        <p>
+          <b>PayPal</b>
+        </p>
+        <div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="EMJYTDZNMF9KA">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0"
+              name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2 class="orange">Apoie o NAAÇÃO todo mês</h2>
+    <div class="row">
+      <div>
+        <p><b>Parceiro amigo</b></p>
+        <p>Eu quero ajudar uma família por mês</p>
+        <br>
+        <a href="http://pag.ae/7U8FNd34m" class="monthly">R$ 45,00</a>
+      </div>
+      <div>
+        <p><b>Parceiro que sonha junto</b></p>
+        <p>Eu quero ajudar uma família por mês e apoiar comunidades impactadas por crises humanitárias </p>
+        <br>
+        <a href="http://pag.ae/7U8FHTtcG" class="monthly">R$ 90,00</a>
+      </div>
+      <div>
+        <p><b>Parceiro que constrói junto</b></p>
+        <p>Eu quero ajudar uma família por mês, apoiar comunidades impactadas por crises humanitárias e colaborar com o
+          NAAÇÃO para formação de redes de lideranças em comunidades
+        </p>
+        <br>
+        <a href="http://pag.ae/bbD5rYN" class="monthly">R$ 200,00</a>
+      </div>
+    </div>
+
+</body>
+
+</html>
