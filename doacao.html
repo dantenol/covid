@@ -73,13 +73,26 @@
       </div>
       <div class="question">
         <p class="title">Bairro<span>*</span></p>
+        <select name="entry.1231759706" id="bairro">
+          <option value="Olhos D'água">Olhos D'água</option>
+          <option value="Portelinha">Portelinha</option>
+          <option value="Pilar">Pilar</option>
+          <option value="Santa Luzia">Santa Luzia</option>
+          <option value="Quilombo das Mangueiras"
+            >Quilombo das Mangueiras</option
+          >
+          <option value="Alto Vera Cruz">Alto Vera Cruz</option>
+          <option value="Outro">Outros</option>
+        </select>
         <input
+          style="display: none;"
           type="text"
           name="entry.1231759706"
           id="1231759706"
           placeholder="Digite aqui..."
           data-required="true"
-        /><button class="next">Próximo</button>
+        />
+        <button class="next">Próximo</button>
       </div>
       <div class="question">
         <p class="title">Rua<span>*</span></p>
@@ -395,8 +408,26 @@
       const hasMessage = 1;
       const height = window.document.documentElement.clientHeight;
 
+      function handleSelect(e) {
+        console.log(e);
+      }
+
+      document.getElementById("bairro").addEventListener("change", (e) => {
+        console.log(e);
+        const text = document.getElementById("1231759706");
+        if (e.target.value === "Outro") {
+          text.style.display = "block";
+          document.getElementById("bairro").classList.add("skip");
+        } else {
+          text.style.display = "none";
+          text.classList.add("skip");
+        }
+      });
+
       function validarCPF() {
-        const cpf = document.getElementById("859324267").value.replace(/[^\d]+/g, "");
+        const cpf = document
+          .getElementById("859324267")
+          .value.replace(/[^\d]+/g, "");
         console.log(cpf);
         if (cpf == "") return alert("CPF inválido");
         // Elimina CPFs invalidos conhecidos
@@ -426,7 +457,7 @@
         rev = 11 - (add % 11);
         if (rev == 10 || rev == 11) rev = 0;
         if (rev != parseInt(cpf.charAt(10))) return alert("CPF inválido");
-        next()
+        next();
       }
 
       function checkFilled() {
@@ -444,6 +475,9 @@
         let regex = null;
         let regexMatch = true;
         el.forEach((e) => {
+          if (e.classList.contains("skip")) {
+            return;
+          }
           if (e.getAttribute("data-required") === "true") isRequired = true;
           if (e.getAttribute("data-regex")) {
             regex = new RegExp(e.getAttribute("data-regex"));
@@ -498,7 +532,10 @@
 
       function formatObj() {
         obj = {};
-        const e = document.querySelectorAll("input, textarea, select");
+        const e = document.querySelectorAll(
+          "input:not(.skip), textarea:not(.skip), select:not(.skip)"
+        );
+        console.log(e);
         for (let i = 0; i < e.length; i++) {
           let c = e[i],
             n = c.getAttribute("name");
