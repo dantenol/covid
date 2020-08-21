@@ -74,6 +74,7 @@
       <div class="question">
         <p class="title">Bairro<span>*</span></p>
         <select name="entry.1231759706" id="bairro">
+          <option value="" selected></option>
           <option value="Olhos D'água">Olhos D'água</option>
           <option value="Portelinha">Portelinha</option>
           <option value="Pilar">Pilar</option>
@@ -511,6 +512,9 @@
           toggleNext(true);
           return false;
         }
+        if (step === 6 && document.getElementById("bairro").value === "Outro") {
+          alert("Ainda não temos previsão para atender sua região. Finalize seu pré cadastro e será notificado(a) com atualizações")
+        }
         const els = document.querySelectorAll(".question");
         els.forEach((e) => {
           e.style.top = "-" + (step + 1) * 100 + "vh";
@@ -583,10 +587,14 @@
           formData.append(key, data[key]);
         }
 
+        let url = "/mensagem-fim.html";
+        if (document.getElementById("bairro").value === "Outro") {
+          url = "/mensagem-fim-sem-previsao.html"
+        }
         enviarForm(
           "1FAIpQLSezrWbn_uGiAL0rQlLnPu6H5oIUzBB2cHgvTbVgwrZm5pMjTA",
           data,
-          "/mensagem-fim.html"
+          url
         );
         alert("Recebemos o seu formulário e em breve entraremos em contato!");
 
