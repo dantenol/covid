@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doação | AMPARO</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/imask"></script>
+    <script src="https://unpkg.com/imask@6.0.5/dist/imask.js"></script>
     <script src="./sendForm.js"></script>
     <link rel="stylesheet" href="./perguntas.css" />
     <link rel="stylesheet" href="./main.css" />
@@ -13,402 +13,498 @@
   <body>
     <div id="container" class="fullscreen">
       <div class="question">
-        <p style="text-align:center;" class="title">ATENÇÃO</p>
-        <p style="font-size: large;">Atualmente estamos dando prioridade para atender as regiões: Olhos d'água, Portelinha, Pilar, Alto Vera Cruz, Santa Luzia, Quilombo das Mangueiras e Brumadinho. 
-        </br> Se você não está em alguma dessas regiões ainda pode se cadastrar, mas provavelmente não vamos conseguir te atender no momento.</p>
-        <br></br>
-        <br></br>
         <p class="title">Preencha os dados para receber sua doação!</p>
+        <p style="font-size: large">
+          DICAS E RECOMENDAÇÕES:<br />
+          1) Atente às descrições das perguntas, normalmente resolvem os
+          problemas<br />
+          2) Só utilize a opção "Outros" quando realmente necessário<br />
+          3) Nas perguntas abertas, priorize palavras-chave, escrevendo
+          resumidamente<br />
+          4) ATENÇÃO ao CPF, é o dado mais importante para a análise,
+          certifique-se de escrevê-lo corretamente
+        </p>
+        <br />
+        <br />
         <button class="next">Começar</button>
       </div>
       <div class="question">
-        <p class="title">Seu nome e sobrenome<span>*</span></p>
+        <p class="title">Nome Completo<span>*</span></p>
         <input
           type="text"
-          name="entry.1707728601"
-          id="1707728601"
+          name="entry.1533789943"
+          id="1533789943"
           placeholder="Digite aqui..."
           data-required="true"
+          data-regex=".{10,}"
         /><button class="next">Próximo</button>
       </div>
       <div class="question">
         <p class="title">CPF<span>*</span></p>
-        <p class="subtitle">Será mantido em sigilo</p>
+        <p class="subtitle">
+          Se possuir CPF, escreva seu CPF. Se não possuir, insira
+          000.000.000-00.
+        </p>
         <input
           type="text"
-          name="entry.859324267"
-          id="859324267"
+          name="entry.1722680704"
+          id="1722680704"
           placeholder="Digite aqui..."
           data-required="true"
+          data-regex="\d{3}\.\d{3}\.\d{3}\-\d{2}"
           data-mask="000.000.000-00"
-          data-regex="^\d{3}.\d{3}.\d{3}-\d{2}$"
         /><button onclick="validarCPF()">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">Celular<span>*</span></p>
-        <p class="subtitle">Com WhatsApp</p>
+        <p class="title">Rua e número<span>*</span></p>
+        <p class="subtitle">
+          Exemplo: Se morar na rua Flores no número 16, responda "Rua Flores,
+          16". Se morar na Avenida São Miguel no número 27A, escreva "Avenida
+          São Miguel, 27A"
+        </p>
         <input
-          type="tel"
-          name="entry.472405798"
-          id="472405798"
+          type="text"
+          name="entry.448573779"
+          id="448573779"
           placeholder="Digite aqui..."
           data-required="true"
-          data-mask="(00) 00000-0000"
-          data-regex="^\(\d{2}\) \d{5}-\d{4}$"
         /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">Profissão</p>
+        <p class="title">Complemento</p>
+        <p class="subtitle">
+          Exemplo 1: se morar no apartamento 201, escreva apto 201. Ex2: Se
+          morar no apto 201 do bloco A, escreva apto 201, bloco A. Na dúvida,
+          tente ser o mais claro(a) possível
+        </p>
         <input
           type="text"
-          name="entry.1851459686"
-          id="1851459686"
+          name="entry.1629493157"
+          id="1629493157"
           placeholder="Digite aqui..."
         /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">Cidade<span>*</span></p>
-        <input
-          type="text"
-          name="entry.1509069398"
-          id="1509069398"
+        <p class="title">Ponto de referência<span>*</span></p>
+        <p class="subtitle">Não poupe descrições, escreva a vontade</p>
+        <textarea
+          name="entry.836917234"
+          id="836917234"
           placeholder="Digite aqui..."
           data-required="true"
+        ></textarea>
+        <input type="text" class="skip" name="entry.1881485267" id="1881485267" hidden />
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">CEP</p>
+        <p class="subtitle">
+          Caso seu endereço não tenha CEP, insira 00.000-00
+        </p>
+        <input
+          type="text"
+          name="entry.1290168757"
+          id="1290168757"
+          placeholder="Digite aqui..."
+          data-mask="00.000-000"
+          data-regex="\d{2}\.\d{3}\-\d{2}"
         /><button class="next">Próximo</button>
       </div>
       <div class="question">
         <p class="title">Bairro<span>*</span></p>
-        <select name="entry.1231759706" id="bairro">
-          <option value="" selected></option>
-          <option value="Olhos D'água">Olhos D'água</option>
-          <option value="Portelinha">Portelinha</option>
-          <option value="Pilar">Pilar</option>
-          <option value="Santa Luzia">Santa Luzia</option>
-          <option value="Quilombo das Mangueiras"
-            >Quilombo das Mangueiras</option
-          >
-          <option value="Alto Vera Cruz">Alto Vera Cruz</option>
-          <option value="Outro">Outros</option>
-        </select>
-        <input
-          style="display: none;"
-          type="text"
-          name="entry.1231759706"
-          id="1231759706"
-          placeholder="Digite aqui..."
-          data-required="true"
-        />
-        <button class="next">Próximo</button>
-      </div>
-      <div class="question">
-        <p class="title">Rua<span>*</span></p>
         <input
           type="text"
-          name="entry.106456020"
-          id="106456020"
+          name="entry.1649406514"
+          id="1649406514"
           placeholder="Digite aqui..."
           data-required="true"
         /><button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">Número e complemento<span>*</span></p>
-        <input
-          type="text"
-          name="entry.505288745"
-          id="505288745"
-          placeholder="Digite aqui..."
-          data-required="true"
-        /><button class="next">Próximo</button>
-      </div>
-      <div class="question">
-        <p class="title">Ponto de referência</p>
-        <p class="subtitle">Como podemos identificar sua casa?</p>
-        <input type="text" name="entry.1322271110" id="1322271110" hidden />
-        <input
-          type="text"
-          name="entry.805271285"
-          id="805271285"
-          placeholder="Digite aqui..."
-        />
-        <button onClick="getCoords()" id="gpsButton">
-          <img src="assets/target.png" alt="GPS" />
-          Pegar localização do GPS
-        </button>
-        <button class="next">Próximo</button>
-      </div>
-      <div class="question">
-        <p class="title">Quantas pessoas moram na casa?<span>*</span></p>
-        <p class="subtitle">Incluindo você</p>
-        <input
-          type="number"
-          name="entry.1238987351"
-          id="1238987351"
-          placeholder="Digite aqui..."
-          data-required="true"
-        /><button class="next">Próximo</button>
-      </div>
-      <div class="question">
-        <p class="title">Fonte de renda</p>
-        <p class="subtitle">Será mantida em sigilo</p>
-        <div class="multipleChoiceContainer">
+        <p class="title">Região<span>*</span></p>
+        <div class="multipleChoiceContainer" data-required="true" id="bairro">
           <input
-            type="checkbox"
-            value="Salário"
-            name="entry.730457284"
-            id="730457284.Salário"
-          />
-          <label for="730457284.Salário">Salário</label>
-          <br />
-          <br />
+            type="radio"
+            value="Alto_Vera_Cruz"
+            name="entry.1100539278"
+            id="1100539278.Alto_Vera_Cruz"
+          /><label for="1100539278.Alto_Vera_Cruz">Alto Vera Cruz</label
+          ><br /><br /><input
+            type="radio"
+            value="Brumadinho"
+            name="entry.1100539278"
+            id="1100539278.Brumadinho"
+          /><label for="1100539278.Brumadinho">Brumadinho</label
+          ><br /><br /><input
+            type="radio"
+            value="Contagem"
+            name="entry.1100539278"
+            id="1100539278.Contagem"
+          /><label for="1100539278.Contagem">Contagem</label><br /><br /><input
+            type="radio"
+            value="Olhos_d'água"
+            name="entry.1100539278"
+            id="1100539278.Olhos_d'água"
+          /><label for="1100539278.Olhos_d'água">Olhos d'água</label
+          ><br /><br /><input
+            type="radio"
+            value="Quilombo_das_Mangueiras"
+            name="entry.1100539278"
+            id="1100539278.Quilombo_das_Mangueiras"
+          /><label for="1100539278.Quilombo_das_Mangueiras"
+            >Quilombo das Mangueiras</label
+          ><br /><br /><input
+            type="radio"
+            value="Ribeirão_das_Neves"
+            name="entry.1100539278"
+            id="1100539278.Ribeirão_das_Neves"
+          /><label for="1100539278.Ribeirão_das_Neves">Ribeirão das Neves</label
+          ><br /><br /><input
+            type="radio"
+            value="Trevo_Dandara"
+            name="entry.1100539278"
+            id="1100539278.Trevo_Dandara"
+          /><label for="1100539278.Trevo_Dandara">Trevo Dandara</label
+          ><br /><br /><input
+            type="radio"
+            value="Outro"
+            name="entry.1100539278"
+            id="1100539278.Outro:"
+          /><label for="1100539278.Outro:">Outro</label>
           <input
-            type="checkbox"
-            value="Auxílio_emergencial_do_Governo"
-            name="entry.730457284"
-            id="730457284.Auxílio_emergencial_do_Governo"
-          />
-          <label for="730457284.Auxílio_emergencial_do_Governo"
-            >Auxílio emergencial do Governo</label
-          >
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Bolsa-família"
-            name="entry.730457284"
-            id="730457284.Bolsa-família"
-          />
-          <label for="730457284.Bolsa-família">Bolsa-família</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="outros"
-            name="entry.730457284"
-            id="730457284.outros"
-          />
-          <label for="730457284.outros">Outros</label>
-        </div>
-        <button class="next">Próximo</button>
-      </div>
-      <div class="question">
-        <p class="title">Do que você precisa?<span>*</span></p>
-        <div class="multipleChoiceContainer">
-          <input
-            type="checkbox"
-            value="Cesta_básica"
-            name="entry.1896023146"
-            id="1896023146.Cesta_básica"
+            style="display: none"
+            type="text"
+            name="entry.1100539278"
+            id="1100539278"
+            placeholder="Digite aqui..."
             data-required="true"
           />
-          <label for="1896023146.Cesta_básica">Cesta básica</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Alimentos"
-            name="entry.1896023146"
-            id="1896023146.Alimentos"
-          />
-          <label for="1896023146.Alimentos">Alimentos</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Alimentos_infantis"
-            name="entry.1896023146"
-            id="1896023146.Alimentos_infantis"
-          />
-          <label for="1896023146.Alimentos_infantis">Alimentos infantis</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Leite"
-            name="entry.1896023146"
-            id="1896023146.Leite"
-          />
-          <label for="1896023146.Leite">Leite</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Verduras"
-            name="entry.1896023146"
-            id="1896023146.Verduras"
-          />
-          <label for="1896023146.Verduras">Verduras</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Fraldas"
-            name="entry.1896023146"
-            id="1896023146.Fraldas"
-          />
-          <label for="1896023146.Fraldas">Fraldas</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Roupas"
-            name="entry.1896023146"
-            id="1896023146.Roupas"
-          />
-          <label for="1896023146.Roupas">Roupas</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Itens_de_limpeza"
-            name="entry.1896023146"
-            id="1896023146.Itens_de_limpeza"
-          />
-          <label for="1896023146.Itens_de_limpeza">Itens de limpeza</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Itens_de_higiene"
-            name="entry.1896023146"
-            id="1896023146.Itens_de_higiene"
-          />
-          <label for="1896023146.Itens_de_higiene">Itens de higiene</label>
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Itens_de_proteçao_pessoal"
-            name="entry.1896023146"
-            id="1896023146.Itens_de_proteçao_pessoal"
-          />
-          <label for="1896023146.Itens_de_proteçao_pessoal"
-            >Itens de proteção</label
-          >
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            value="Outros"
-            name="entry.1896023146"
-            id="1896023146.Outros"
-          />
-          <label for="1896023146.Outros">Outros</label>
         </div>
         <button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">Especificação da doação<span>*</span></p>
-        <p class="subtitle">Conte mais sobre suas necessidades</p>
-        <textarea
-          name="entry.363426765"
-          data-required="true"
-          id="363426765"
+        <p class="title">Cidade<span>*</span></p>
+        <div class="multipleChoiceContainer" data-required="true" id="cidade">
+          <input
+            type="radio"
+            value="Belo_Horizonte"
+            name="entry.239843195"
+            id="239843195.Belo_Horizonte"
+          /><label for="239843195.Belo_Horizonte">Belo Horizonte</label
+          ><br /><br /><input
+            type="radio"
+            value="Brumadinho"
+            name="entry.239843195"
+            id="239843195.Brumadinho"
+          /><label for="239843195.Brumadinho">Brumadinho</label
+          ><br /><br /><input
+            type="radio"
+            value="Contagem"
+            name="entry.239843195"
+            id="239843195.Contagem"
+          /><label for="239843195.Contagem">Contagem</label><br /><br /><input
+            type="radio"
+            value="Outro"
+            name="entry.239843195"
+            id="239843195.Outro:"
+          /><label for="239843195.Outro:">Outro:</label>
+          <input
+            style="display: none"
+            type="text"
+            name="entry.239843195"
+            id="239843195"
+            placeholder="Digite aqui..."
+            data-required="true"
+          />
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Telefone Celular <span>*</span></p>
+        <p class="subtitle">Exemplo: (00) 00000-0000</p>
+        <input
+          type="text"
+          name="entry.2011821166"
+          id="2011821166"
           placeholder="Digite aqui..."
-        ></textarea
-        ><br /><button id="send">Finalizar</button>
+          data-required="true"
+          data-mask="(00) 00000-0000"
+          data-regex="\(\d{2}\) \d{5}-\d{4}"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Total de pessoas na casa <span>*</span></p>
+        <p class="subtitle">Responda com um número, exemplo: 5</p>
+        <input
+          type="text"
+          name="entry.1380890323"
+          id="1380890323"
+          placeholder="Digite aqui..."
+          data-required="true"
+          data-regex="\d{1,}"
+          data-mask="0000"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">O que você necessita?<span>*</span></p>
+        <div class="multipleChoiceContainer" data-required="true" id="donation">
+          <input
+            type="checkbox"
+            value="Cesta_Básica"
+            name="entry.1077210769"
+            id="1077210769.Cesta_Básica"
+          /><label for="1077210769.Cesta_Básica">Cesta Básica</label
+          ><br /><br /><input
+            type="checkbox"
+            value="Alimentos"
+            name="entry.1077210769"
+            id="1077210769.Alimentos"
+          /><label for="1077210769.Alimentos">Alimentos</label
+          ><br /><br /><input
+            type="checkbox"
+            value="Alimentos_infantis"
+            name="entry.1077210769"
+            id="1077210769.Alimentos_infantis"
+          /><label for="1077210769.Alimentos_infantis">Alimentos infantis</label
+          ><br /><br /><input
+            type="checkbox"
+            value="Fraldas"
+            name="entry.1077210769"
+            id="1077210769.Fraldas"
+          /><label for="1077210769.Fraldas">Fraldas</label><br /><br /><input
+            type="checkbox"
+            value="Itens_de_higiene"
+            name="entry.1077210769"
+            id="1077210769.Itens_de_higiene"
+          /><label for="1077210769.Itens_de_higiene">Itens de higiene</label
+          ><br /><br /><input
+            type="checkbox"
+            value="Itens_de_limpeza"
+            name="entry.1077210769"
+            id="1077210769.Itens_de_limpeza"
+          /><label for="1077210769.Itens_de_limpeza">Itens de limpeza</label
+          ><br /><br /><input
+            type="checkbox"
+            value="Itens_de_proteção"
+            name="entry.1077210769"
+            id="1077210769.Itens_de_proteção"
+          /><label for="1077210769.Itens_de_proteção">Itens de proteção</label
+          ><br /><br /><input
+            type="checkbox"
+            value="Roupas"
+            name="entry.1077210769"
+            id="1077210769.Roupas"
+          /><label for="1077210769.Roupas">Roupas</label><br /><br /><input
+            type="checkbox"
+            value="Leite"
+            name="entry.1077210769"
+            id="1077210769.Leite"
+          /><label for="1077210769.Leite">Leite</label><br /><br /><input
+            type="checkbox"
+            value="Verduras"
+            name="entry.1077210769"
+            id="1077210769.Verduras"
+          /><label for="1077210769.Verduras">Verduras</label><br /><br /><input
+            type="checkbox"
+            value="Outro"
+            name="entry.1077210769"
+            id="1077210769.Outro:"
+          /><label for="1077210769.Outro:">Outro:</label>
+          <input
+            style="display: none"
+            type="text"
+            name="entry.1077210769"
+            id="1077210769"
+            placeholder="Digite aqui..."
+            data-required="true"
+          />
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Qual tamanho de fralda necessita?</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="checkbox"
+            value="Não_se_aplica"
+            name="entry.1810986159"
+            id="1810986159.Não_se_aplica"
+          /><label for="1810986159.Não_se_aplica">Não se aplica</label
+          ><br /><br /><input
+            type="checkbox"
+            value="RN"
+            name="entry.1810986159"
+            id="1810986159.RN"
+          /><label for="1810986159.RN">RN</label><br /><br /><input
+            type="checkbox"
+            value="P"
+            name="entry.1810986159"
+            id="1810986159.P"
+          /><label for="1810986159.P">P</label><br /><br /><input
+            type="checkbox"
+            value="M"
+            name="entry.1810986159"
+            id="1810986159.M"
+          /><label for="1810986159.M">M</label><br /><br /><input
+            type="checkbox"
+            value="G"
+            name="entry.1810986159"
+            id="1810986159.G"
+          /><label for="1810986159.G">G</label><br /><br /><input
+            type="checkbox"
+            value="XG"
+            name="entry.1810986159"
+            id="1810986159.XG"
+          /><label for="1810986159.XG">XG</label><br /><br /><input
+            type="checkbox"
+            value="XGG"
+            name="entry.1810986159"
+            id="1810986159.XGG"
+          /><label for="1810986159.XGG">XGG</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Campo aberto para comentário</p>
+        <textarea
+          name="entry.1551602499"
+          id="1551602499"
+          placeholder="Digite aqui..."
+        ></textarea>
+        <br /><button id="send">Finalizar</button>
       </div>
     </div>
     <script>
       let step = 0;
+      let timeout;
       const build = [
+        {},
         {
-          title: "Nome *",
+          title: "Nome Completo *",
+          subtitle: "",
           type: "text",
           required: true,
-          name: "entry.1707728601",
+          name: "entry.1533789943",
         },
         {
-          title: "CPF *",
+          title: "CPF ou NIS *",
+          subtitle:
+            "Se possuir CPF, escreva seu CPF. Se não possuir, escreva seu NIS (Número de Identificação Social)  - CASO O BENEFICIÁRIO NÃO POSSUA CPF/NIS ESCREVA O SEGUINTE CÓDIGO: 12345678909",
           type: "text",
           required: true,
-          name: "entry.859324267",
+          name: "entry.1722680704",
         },
         {
-          title: "Telefone *",
+          title: "Rua e número *",
+          subtitle:
+            'Exemplo: Se morar na rua Flores no número 16, responda "Rua Flores, 16". Se morar na Avenida São Miguel no número 27A, escreva "Avenida São Miguel, 27A"',
           type: "text",
           required: true,
-          name: "entry.472405798",
+          name: "entry.448573779",
         },
         {
-          title: "Profissão",
+          title: "Complemento",
+          subtitle:
+            "Exemplo 1: se morar no apartamento 201, escreva apto 201. Ex2: Se morar no apto 201 do bloco A, escreva apto 201, bloco A. Na dúvida, tente ser o mais claro(a) possível",
           type: "text",
           required: false,
-          name: "entry.1851459686",
+          name: "entry.1629493157",
         },
         {
-          title: "Cidade *",
-          type: "text",
+          title: "Ponto de referência *",
+          subtitle: "Não poupe descrições, escreva a vontade",
+          type: "textarea",
           required: true,
-          name: "entry.1509069398",
+          name: "entry.836917234",
+        },
+        {
+          title: "CEP",
+          subtitle:
+            'Caso não saiba seu CEP, pode olhar no site dos Correios: http://www.buscacep.correios.com.br/sistemas/buscacep/. Se seu CEP for 00000-000 pode escrever "00000000"',
+          type: "text",
+          required: false,
+          name: "entry.1290168757",
         },
         {
           title: "Bairro *",
+          subtitle: "",
           type: "text",
           required: true,
-          name: "entry.1231759706",
+          name: "entry.1649406514",
         },
         {
-          title: "Rua *",
-          type: "text",
-          required: true,
-          name: "entry.106456020",
-        },
-        {
-          title: "Numero e complemento *",
-          type: "text",
-          required: true,
-          name: "entry.505288745",
-        },
-        {
-          required: false,
-          name: "entry.1322271110",
-        },
-        {
-          title: "Ponto de referencia",
-          type: "text",
-          required: false,
-          name: "entry.805271285",
-        },
-        {
-          title: "quantas pessoas moram? *",
-          type: "text",
-          required: true,
-          name: "entry.1238987351",
-        },
-        {
-          title: "Fonte de renda",
-          type: "checkbox",
+          title: "Região *",
+          subtitle: "",
+          type: "radio",
           options: [
-            "Salário",
-            "Auxílio emergencial do Governo",
-            "Bolsa-família",
-            "Opção 4",
+            "Alto Vera Cruz",
+            "Brumadinho",
+            "Contagem",
+            "Olhos d'água",
+            "Quilombo das Mangueiras",
+            "Ribeirão das Neves",
+            "Trevo Dandara",
+            "Outro:",
           ],
-          required: false,
-          name: "entry.730457284",
+          required: true,
+          name: "entry.1100539278",
         },
         {
-          title: "Tipo de doação",
+          title: "Cidade *",
+          subtitle: "",
+          type: "radio",
+          options: ["Belo Horizonte", "Brumadinho", "Contagem", "Outro:"],
+          required: true,
+          name: "entry.239843195",
+        },
+        {
+          title: "Telefone Celular  *",
+          subtitle: "Exemplo: (00) 00000-0000",
+          type: "text",
+          required: true,
+          name: "entry.2011821166",
+        },
+        {
+          title: "Total de pessoas na casa  *",
+          subtitle: "Responda com um número, exemplo: 5",
+          type: "text",
+          required: true,
+          name: "entry.1380890323",
+        },
+        {
+          title: "O que você necessita? *",
+          subtitle: "",
           type: "checkbox",
           options: [
-            "Cesta básica",
+            "Cesta Básica",
             "Alimentos",
             "Alimentos infantis",
+            "Fraldas",
+            "Itens de higiene",
+            "Itens de limpeza",
+            "Itens de proteção",
+            "Roupas",
             "Leite",
             "Verduras",
-            "Fraldas",
-            "Itens de limpeza",
-            "Itens de higiene",
-            "Itens de proteçao pessoal",
+            "Outro:",
           ],
           required: true,
-          name: "entry.1896023146",
+          name: "entry.1077210769",
         },
         {
-          title: "Especificação da doação",
+          title: "Qual tamanho de fralda necessita?",
+          subtitle: "",
+          type: "checkbox",
+          options: ["Não se aplica", "RN", "P", "M", "G", "XG", "XGG"],
+          required: false,
+          name: "entry.1810986159",
+        },
+        {
+          title: "Campo aberto para comentário",
+          subtitle: "",
           type: "textarea",
           required: false,
-          name: "entry.363426765",
+          name: "entry.1551602499",
         },
       ];
       const hasMessage = 1;
@@ -420,26 +516,96 @@
 
       document.getElementById("bairro").addEventListener("change", (e) => {
         console.log(e);
-        const text = document.getElementById("1231759706");
-        if (e.target.value === "Outro") {
+        const text = document.getElementById("1100539278");
+        clearTimeout(timeout);
+        if (e.target.value === "Outro" || text.value) {
           text.style.display = "block";
-          document.getElementById("bairro").classList.add("skip");
+          document
+            .querySelectorAll(
+              "#bairro input[type='radio'], #bairro input[type='checkbox']"
+            )
+            .forEach((e) => {
+              e.classList.add("skip");
+            });
+          text.classList.remove("skip");
         } else {
           text.style.display = "none";
+          document
+            .querySelectorAll(
+              "#bairro input[type='radio'], #bairro input[type='checkbox']"
+            )
+            .forEach((e) => {
+              e.classList.remove("skip");
+            });
+          text.classList.add("skip");
+        }
+      });
+
+      document.getElementById("cidade").addEventListener("change", (e) => {
+        console.log(e);
+        const text = document.getElementById("239843195");
+        clearTimeout(timeout);
+        if (e.target.value === "Outro") {
+          text.style.display = "block";
+          document
+            .querySelectorAll(
+              "#cidade input[type='radio'], #cidade input[type='checkbox']"
+            )
+            .forEach((e) => {
+              e.classList.add("skip");
+            });
+          text.classList.remove("skip");
+        } else {
+          text.style.display = "none";
+          document
+            .querySelectorAll(
+              "#cidade input[type='radio'], #cidade input[type='checkbox']"
+            )
+            .forEach((e) => {
+              e.classList.remove("skip");
+            });
+          text.classList.add("skip");
+        }
+      });
+
+      document.getElementById("donation").addEventListener("change", (e) => {
+        console.log(e);
+        const text = document.getElementById("1077210769");
+        clearTimeout(timeout);
+        if (e.target.value === "Outro") {
+          text.style.display = "block";
+          document
+            .querySelectorAll(
+              "#donation input[type='radio'], #donation input[type='checkbox']"
+            )
+            .forEach((e) => {
+              e.classList.add("skip");
+            });
+          text.classList.remove("skip");
+        } else {
+          text.style.display = "none";
+          document
+            .querySelectorAll(
+              "#donation input[type='radio'], #donation input[type='checkbox']"
+            )
+            .forEach((e) => {
+              e.classList.remove("skip");
+            });
           text.classList.add("skip");
         }
       });
 
       function validarCPF() {
         const cpf = document
-          .getElementById("859324267")
+          .getElementById("1722680704")
           .value.replace(/[^\d]+/g, "");
-        console.log(cpf);
         if (cpf == "") return alert("CPF inválido");
         // Elimina CPFs invalidos conhecidos
+        if (cpf == "00000000000") {
+          return next();
+        }
         if (
           cpf.length != 11 ||
-          cpf == "00000000000" ||
           cpf == "11111111111" ||
           cpf == "22222222222" ||
           cpf == "33333333333" ||
@@ -470,10 +636,9 @@
         let i = step;
         if (hasMessage && i === 0) {
           return true;
-        } else if (hasMessage) {
-          i--;
         }
         let name = build[i].name;
+        console.log(i, build[i]);
         let el = document.getElementsByName(name);
 
         let hasValue = false;
@@ -482,6 +647,7 @@
         let regexMatch = true;
         el.forEach((e) => {
           if (e.classList.contains("skip")) {
+            console.log("skipping", e);
             return;
           }
           if (e.getAttribute("data-required") === "true") isRequired = true;
@@ -517,8 +683,14 @@
           toggleNext(true);
           return false;
         }
-        if (step === 6 && document.getElementById("bairro").value === "Outro") {
-          alert("Ainda não temos previsão para atender sua região. Finalize seu pré cadastro e será notificado(a) com atualizações")
+        if (step === 4) {
+          getCoords();
+        }
+        if (step === 12) {
+          const fralda = document.getElementById("1077210769.Fraldas").checked;
+          if (!fralda) {
+            step++;
+          }
         }
         const els = document.querySelectorAll(".question");
         els.forEach((e) => {
@@ -570,9 +742,10 @@
 
       function checkData(data) {
         Object.keys(data).forEach((entry, i) => {
-          if (build[i].required && !data[entry]) {
+          console.log(entry, i + 1, build[i + 1], data[entry]);
+          if (build[i + 1].required && !data[entry]) {
             highlightRequired(entry);
-            throw "Campo obrigatório";
+            throw "Campo obrigatório" + entry;
           }
         });
       }
@@ -586,18 +759,17 @@
 
       async function send() {
         const data = formatObj();
+        console.log(data);
         checkData(data);
+        data["entry.1881485267"] = document.getElementById("1881485267").value
         const formData = new FormData();
         for (var key in data) {
           formData.append(key, data[key]);
         }
 
         let url = "/mensagem-fim.html";
-        if (document.getElementById("bairro").value === "Outro") {
-          url = "/mensagem-fim-sem-previsao.html"
-        }
         enviarForm(
-          "1FAIpQLSezrWbn_uGiAL0rQlLnPu6H5oIUzBB2cHgvTbVgwrZm5pMjTA",
+          "1FAIpQLSdYWBenNkFQng8GbuSAk4O4OJ4L8k65mlTNbpwvAoXC3xNCbQ",
           data,
           url
         );
@@ -622,8 +794,10 @@
         if (true) {
           document.querySelectorAll("input").forEach((e) =>
             e.addEventListener("keypress", function (e) {
-              if (e.key === "Enter") {
+              if (e.key === "Enter" && step !== 2) {
                 next();
+              } else if (e.key === "Enter" && step === 2) {
+                validarCPF();
               }
             })
           );
@@ -632,7 +806,7 @@
             e.addEventListener(
               "click",
               () => {
-                setTimeout(next, 200);
+                timeout = setTimeout(next, 200);
               },
               false
             );
@@ -670,9 +844,17 @@
           lat: coords.latitude,
           lng: coords.longitude,
         };
-        document.getElementById("1322271110").value = JSON.stringify(pos);
-        document.getElementById("gpsButton").hidden = true;
+        document.getElementById("1881485267").value = JSON.stringify(pos);
       };
+
+      function goToStep(n) {
+        step = n;
+        const els = document.querySelectorAll(".question");
+        els.forEach((e) => {
+          e.style.top = "-" + (step) * 100 + "vh";
+        });
+        toggleNext(true)
+      }
     </script>
   </body>
 </html>
