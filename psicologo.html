@@ -1,0 +1,522 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amparo</title>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="./sendForm.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="perguntas.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="question">
+        <p class="title">Preencha os dados para receber seu acolhimento!</p>
+        <button class="next">Começar</button>
+      </div>
+      <div class="question">
+        <p class="title">Qual o seu nome completo?<span>*</span></p>
+        <input
+          type="text"
+          name="entry.1550238130"
+          id="1550238130"
+          placeholder="Digite aqui..."
+          data-required="true"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">E o seu CPF?<span>*</span></p>
+        <p class="subtitle">Será usado apenas para verificação de dados</p>
+        <input
+          type="text"
+          name="entry.1485516733"
+          id="1485516733"
+          placeholder="Digite aqui..."
+          data-required="true"
+          data-regex="^\d{3}\.\d{3}\.\d{3}\-\d{2}$"
+          data-mask="000.000.000-00"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Sexo</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="radio"
+            value="Feminino"
+            name="entry.1600095713"
+            id="1600095713.Feminino"
+          /><label for="1600095713.Feminino">Feminino</label><br /><br /><input
+            type="radio"
+            value="Masculino"
+            name="entry.1600095713"
+            id="1600095713.Masculino"
+          /><label for="1600095713.Masculino">Masculino</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">
+          Vamos entrar em contato por WhatsApp, então precisamos do seu
+          telefone<span>*</span>
+        </p>
+        <input
+          type="text"
+          name="entry.1534760288"
+          id="1534760288"
+          placeholder="Digite aqui..."
+          data-regex="^(\(\d{2}\)\s)(\d{5}\-\d{4})$"
+          data-mask="(00) 00000-0000"
+          data-required="true"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Sua idade:<span>*</span></p>
+        <input
+          type="number"
+          name="entry.1881022392"
+          id="1881022392"
+          placeholder="Digite aqui..."
+          data-required="true"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Situação<span>*</span></p>
+        <div class="multipleChoiceContainer" data-required="true">
+          <input
+            type="radio"
+            value="Empregado(a)"
+            name="entry.1574721388"
+            id="1574721388.Empregado(a)"
+          /><label for="256262728.Empregado(a)">Empregado(a)</label
+          ><br /><br /><input
+            type="radio"
+            value="Desempregado(a)"
+            name="entry.1574721388"
+            id="1574721388.Desempregado(a)"
+          /><label for="1574721388.Desempregado(a)">Desempregado(a)</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Profissão</p>
+        <input
+          type="text"
+          name="entry.2028920309"
+          id="2028920309"
+          placeholder="Digite aqui..."
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Cidade<span>*</span></p>
+        <input
+          type="text"
+          name="entry.242013015"
+          id="242013015"
+          placeholder="Digite aqui..."
+          data-required="true"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Bairro<span>*</span></p>
+        <input
+          type="text"
+          name="entry.1677113123"
+          id="1677113123"
+          placeholder="Digite aqui..."
+          data-required="true"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Faz ou já fez acompanhamento psicológico?</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="radio"
+            value="Sim"
+            name="entry.1753380424"
+            id="1753380424.Sim"
+          /><label for="1753380424.Sim">Sim</label><br /><br /><input
+            type="radio"
+            value="Não"
+            name="entry.1753380424"
+            id="1753380424.Não"
+          /><label for="1753380424.Não">Não</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Faz ou já fez acompanhamento psiquiátrico?</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="radio"
+            value="Sim"
+            name="entry.568812748"
+            id="568812748.Sim"
+          /><label for="568812748.Sim">Sim</label><br /><br /><input
+            type="radio"
+            value="Não"
+            name="entry.568812748"
+            id="568812748.Não"
+          /><label for="568812748.Não">Não</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Toma medicamentos psiquiátricos?</p>
+        <div class="multipleChoiceContainer">
+          <input
+            type="radio"
+            value="Sim"
+            name="entry.2015672421"
+            id="2015672421.Sim"
+          /><label for="2015672421.Sim">Sim</label><br /><br /><input
+            type="radio"
+            value="Não"
+            name="entry.2015672421"
+            id="2015672421.Não"
+          /><label for="2015672421.Não">Não</label>
+        </div>
+        <button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Se sim, qual? Se não, basta não responder</p>
+        <input
+          type="text"
+          name="entry.1006391381"
+          id="1006391381"
+          placeholder="Digite aqui..."
+          data-required="false"
+        /><button class="next">Próximo</button>
+      </div>
+      <div class="question">
+        <p class="title">Deixe uma mensagem<span>*</span></p>
+        <textarea
+          name="entry.1019189967"
+          id="1019189967"
+          placeholder="Digite aqui..."
+          data-required="true"
+        ></textarea
+        ><br /><button id="send">Finalizar</button>
+      </div>
+    </div>
+    <script>
+      let step = 0;
+      const build = [
+        {
+          title: "Qual o seu nome completo? *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.1550238130",
+        },
+        {
+          title: "E o seu CPF? *",
+          subtitle: "Será usado apenas para verificação de dados",
+          type: "text",
+          required: true,
+          name: "entry.1485516733",
+        },
+        {
+          title: "Sexo",
+          subtitle: "",
+          type: "radio",
+          options: ["Feminino", "Masculino"],
+          required: false,
+          name: "entry.1600095713",
+        },
+        {
+          title: "Vamos entrar em contato por WhatsApp, então precisamos do seu telefome *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.1534760288",
+        },
+        {
+          title: "Sua idade: *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.1881022392",
+        },
+        {
+          title: "Situação *",
+          subtitle: "",
+          type: "radio",
+          options: ["Empregado(a)", "Desempregado(a)"],
+          required: true,
+          name: "entry.1574721388",
+        },
+        {
+          title: "Profissão",
+          subtitle: "",
+          type: "text",
+          required: false,
+          name: "entry.2028920309",
+        },
+        {
+          title: "Cidade *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.242013015",
+        },
+        {
+          title: "Bairro *",
+          subtitle: "",
+          type: "text",
+          required: true,
+          name: "entry.1677113123",
+        },
+        {
+          title: "Fazia atendimento psicológico?",
+          subtitle: "",
+          type: "radio",
+          options: ["Sim", "Não"],
+          required: false,
+          name: "entry.1753380424",
+        },
+        {
+          title: "Faz acompanhamento psiquiátrico?",
+          subtitle: "",
+          type: "radio",
+          options: ["Sim", "Não"],
+          required: false,
+          name: "entry.568812748",
+        },
+        {
+          title: "Toma medicamentos psiquiátricos?",
+          subtitle: "",
+          type: "radio",
+          options: ["Sim", "Não"],
+          required: false,
+          name: "entry.2015672421",
+        },
+        {
+          title: "Se sim, qual? Se não, basta não responder",
+          subtitle: "",
+          type: "text",
+          name: "entry.1006391381",
+        },
+        {
+          title: "Deixe uma mensagem *",
+          subtitle: "",
+          type: "textarea",
+          required: true,
+          name: "entry.1019189967",
+        },
+      ];
+      const hasMessage = 1;
+      const height = window.document.documentElement.clientHeight;
+
+      function checkFilled() {
+        let i = step;
+        if (hasMessage && i === 0) {
+          return true;
+        } else if (hasMessage) {
+          i--;
+        }
+        let name = build[i].name;
+        let el = document.getElementsByName(name);
+
+        let hasValue = false;
+        let isRequired = false;
+        let regex = null;
+        let regexMatch = true;
+        el.forEach((e) => {
+          if (e.getAttribute("data-required") === "true") isRequired = true;
+          if (e.getAttribute("data-regex")) {
+            regex = new RegExp(e.getAttribute("data-regex"));
+            regexMatch = false;
+          }
+          if (e.value) hasValue = true;
+          if (regex && regex.test(e.value)) regexMatch = true;
+        });
+
+        return Boolean(regexMatch && (!isRequired || (isRequired && hasValue)));
+      }
+
+      function next() {
+        const canPass = checkFilled();
+        if (!canPass) {
+          alert("Você deve responder propriamente para continuar!");
+          return false;
+        }
+        const els = document.querySelectorAll(".question");
+        els.forEach((e) => {
+          e.style.top = "-" + (step + 1) * 100 + "%";
+        });
+        step++;
+      }
+
+      function listCheckbox(obj, name, val) {
+        console.log(obj, name, val);
+        if (!obj[name]) {
+          obj[name] = [val];
+        } else {
+          obj[name].push(val);
+        }
+        console.log(obj);
+        return obj;
+      }
+
+      function formatObj() {
+        obj = {};
+        const e = document.querySelectorAll("input, textarea, select");
+        for (let i = 0; i < e.length; i++) {
+          let c = e[i],
+            n = c.getAttribute("name");
+          if (n) {
+            if (
+              ((c.type === "checkbox" || c.type === "radio") && c.checked) ||
+              (c.type !== "checkbox" && c.type !== "radio" && obj[n])
+            ) {
+              obj = listCheckbox(obj, n, c.value);
+            } else if (c.type !== "checkbox" && c.type !== "radio") {
+              obj[n] = c.value;
+            }
+          }
+        }
+        const linearObj = {};
+        Object.keys(obj).forEach((k) => {
+          linearObj[k] = String(obj[k]);
+        });
+
+        console.log(linearObj);
+        return linearObj;
+      }
+
+      function checkData(data) {
+        Object.keys(data).forEach((entry, i) => {
+          if (build[i].required && !data[entry]) {
+            highlightRequired(entry);
+            alert("Campo obrigatório!");
+            throw "Campo obrigatório";
+          }
+        });
+      }
+
+      function highlightRequired(name) {
+        document.getElementsByName(name).forEach((e) => {
+          e.classList.add("blink");
+          setTimeout(e.classList.remove("blink"), 4000);
+        });
+      }
+
+      function formatarObj() {
+        obj = {};
+        const e = document.querySelectorAll("input, textarea, select");
+        for (let i = 0; i < e.length; i++) {
+          let c = e[i],
+            n = c.getAttribute("name");
+          if (n) obj[n] = c.value;
+        }
+        return obj;
+      }
+
+      function enviar() {
+        if (!document.getElementById("1019189967").value) {
+          alert("O campo é obrigatório!");
+          return false;
+        }
+
+        const data = formatarObj();
+        enviarForm(
+          "1FAIpQLSc0Uh22bQpUh_Up0Io5N7bHDg6loXzsxcIoy4fCSHqm6UcEhA",
+          data,
+          "psi-fim.html"
+        );
+        alert("Recebemos o seu formulário e em breve entraremos em contato!");
+        document.getElementById("send").disabled = true;
+      }
+
+      function resetForm() {
+        document.querySelectorAll("[name]").forEach((e) => {
+          e.value = null;
+          e.checked = false;
+        });
+
+        step = 0;
+
+        document.querySelectorAll(".question").forEach((e) => {
+          e.style.top = "";
+        });
+      }
+
+      function save() {
+        const data = formatObj();
+        checkData(data);
+        const id = "answer." + Math.round(Math.random() * (9999 - 1000) + 1000);
+        localStorage.setItem(id, JSON.stringify(data));
+        alert(
+          "Suas respostas foram salvas. Não esqueça de envia-las mais tarde!"
+        );
+        resetForm();
+      }
+
+      function submit() {
+        if (false) {
+          save();
+        } else {
+          enviar();
+        }
+      }
+
+      window.document.querySelectorAll("button.next").forEach((b) => {
+        b.addEventListener("click", next, false);
+      });
+
+      window.document
+        .getElementById("send")
+        .addEventListener("click", submit, false);
+
+      window.addEventListener("load", function () {
+        if (true) {
+          document.querySelectorAll("input").forEach((e) =>
+            e.addEventListener("keypress", function (e) {
+              if (e.key === "Enter") {
+                next();
+              }
+            })
+          );
+
+          document.querySelectorAll("input[type='radio']").forEach((e) => {
+            e.addEventListener(
+              "click",
+              () => {
+                let thisStep = step;
+                setTimeout(() => {
+                  if (step === thisStep) {
+                    console.log(1212);
+                    next();
+                  }
+                }, 200);
+              },
+              false
+            );
+          });
+        }
+
+        const masks = document.querySelectorAll("[data-mask]");
+
+        if (masks.length) {
+          let script = "";
+          masks.forEach((el) => {
+            const id = el.id;
+            const mask = el.getAttribute("data-mask");
+            console.log(id, mask);
+            script += `const Mask_${id} = IMask(document.getElementById("${id}"), {
+          mask: [
+            {
+              mask: "${mask}",
+            },
+          ],
+        });`;
+          });
+          const scr = document.createElement("script");
+          scr.innerHTML = script;
+          window.document.body.appendChild(scr);
+        }
+      });
+    </script>
+  </body>
+</html>
