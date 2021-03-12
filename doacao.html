@@ -97,7 +97,7 @@
         <button class="next">Próximo</button>
       </div>
       <div class="question">
-        <p class="title">CEP</p>
+        <p class="title">CEP<span>*</span></p>
         <p class="subtitle">
           Caso seu endereço não tenha CEP, insira 00.000-000
         </p>
@@ -166,15 +166,21 @@
             id="1100539278.Trevo_Dandara"
           /><label for="1100539278.Trevo_Dandara">Trevo Dandara</label
           ><br /><br /><input
+          type="radio"
+          value="Vila Barraginha"
+          name="entry.1100539278"
+          id="1100539278.Vila Barraginha"
+        /><label for="1100539278.Vila_Barraginha">Vila Barraginha</label
+        ><br /><br /><input
             type="radio"
-            value="Outro"
+            value="__other_option__"
             name="entry.1100539278"
             id="1100539278.Outro:"
           /><label for="1100539278.Outro:">Outro</label>
           <input
             style="display: none"
             type="text"
-            name="entry.1100539278"
+            name="entry.1100539278.other_option_response"
             id="1100539278"
             placeholder="Digite aqui..."
             data-required="true"
@@ -202,20 +208,7 @@
             value="Contagem"
             name="entry.239843195"
             id="239843195.Contagem"
-          /><label for="239843195.Contagem">Contagem</label><br /><br /><input
-            type="radio"
-            value="Outro"
-            name="entry.239843195"
-            id="239843195.Outro:"
-          /><label for="239843195.Outro:">Outro:</label>
-          <input
-            style="display: none"
-            type="text"
-            name="entry.239843195"
-            id="239843195"
-            placeholder="Digite aqui..."
-            data-required="true"
-          />
+          /><label for="239843195.Contagem">Contagem</label>
         </div>
         <button class="next">Próximo</button>
       </div>
@@ -250,7 +243,7 @@
         <div class="multipleChoiceContainer" data-required="true" id="donation">
           <input
             type="checkbox"
-            value="Cesta_Básica"
+            value="Cesta Básica"
             name="entry.1077210769"
             id="1077210769.Cesta_Básica"
           /><label for="1077210769.Cesta_Básica">Cesta Básica</label
@@ -262,7 +255,7 @@
           /><label for="1077210769.Alimentos">Alimentos</label
           ><br /><br /><input
             type="checkbox"
-            value="Alimentos_infantis"
+            value="Alimentos infantis"
             name="entry.1077210769"
             id="1077210769.Alimentos_infantis"
           /><label for="1077210769.Alimentos_infantis">Alimentos infantis</label
@@ -273,19 +266,19 @@
             id="1077210769.Fraldas"
           /><label for="1077210769.Fraldas">Fraldas</label><br /><br /><input
             type="checkbox"
-            value="Itens_de_higiene"
+            value="Itens de higiene"
             name="entry.1077210769"
             id="1077210769.Itens_de_higiene"
           /><label for="1077210769.Itens_de_higiene">Itens de higiene</label
           ><br /><br /><input
             type="checkbox"
-            value="Itens_de_limpeza"
+            value="Itens de limpeza"
             name="entry.1077210769"
             id="1077210769.Itens_de_limpeza"
           /><label for="1077210769.Itens_de_limpeza">Itens de limpeza</label
           ><br /><br /><input
             type="checkbox"
-            value="Itens_de_proteção"
+            value="Itens de proteção"
             name="entry.1077210769"
             id="1077210769.Itens_de_proteção"
           /><label for="1077210769.Itens_de_proteção">Itens de proteção</label
@@ -306,15 +299,16 @@
             id="1077210769.Verduras"
           /><label for="1077210769.Verduras">Verduras</label><br /><br /><input
             type="checkbox"
-            value="Outro"
+            value="__other_option__"
             name="entry.1077210769"
             id="1077210769.Outro:"
           /><label for="1077210769.Outro:">Outro:</label>
           <input
             style="display: none"
             type="text"
-            name="entry.1077210769"
+            name="entry.1077210769.other_option_response"
             id="1077210769"
+            class="skip"
             placeholder="Digite aqui..."
             data-required="true"
           />
@@ -323,10 +317,10 @@
       </div>
       <div class="question">
         <p class="title">Qual tamanho de fralda necessita?</p>
-        <div class="multipleChoiceContainer">
+        <div class="multipleChoiceContainer" id="tamanhofraldas">
           <input
             type="checkbox"
-            value="Não_se_aplica"
+            value="Não se aplica"
             name="entry.1810986159"
             id="1810986159.Não_se_aplica"
           /><label for="1810986159.Não_se_aplica">Não se aplica</label
@@ -444,16 +438,27 @@
             "Quilombo das Mangueiras",
             "Ribeirão das Neves",
             "Trevo Dandara",
+            "Vila Barraginha",
             "Outro:",
           ],
           required: true,
           name: "entry.1100539278",
         },
         {
+          title: "Região *",
+          subtitle: "",
+          type: "radio",
+          options: [
+            "Outro:",
+          ],
+          required: true,
+          name: "entry.1100539278.other_option_response",
+        },
+        {
           title: "Cidade *",
           subtitle: "",
           type: "radio",
-          options: ["Belo Horizonte", "Brumadinho", "Contagem", "Outro:"],
+          options: ["Belo Horizonte", "Brumadinho", "Contagem"],
           required: true,
           name: "entry.239843195",
         },
@@ -492,6 +497,16 @@
           name: "entry.1077210769",
         },
         {
+          title: "O que você necessita? *",
+          subtitle: "",
+          type: "checkbox",
+          options: [
+            "Outro:",
+          ],
+          required: true,
+          name: "entry.1077210769.other_option_response",
+        },
+        {
           title: "Qual tamanho de fralda necessita?",
           subtitle: "",
           type: "checkbox",
@@ -515,21 +530,24 @@
       }
 
       document.getElementById("bairro").addEventListener("change", (e) => {
-        console.log(e);
         const text = document.getElementById("1100539278");
         clearTimeout(timeout);
-        if (e.target.value === "Outro" || text.value) {
+        if (e.target.value === "__other_option__" || e.target.type ==="text") {
           text.style.display = "block";
           document
             .querySelectorAll(
               "#bairro input[type='radio'], #bairro input[type='checkbox']"
             )
             .forEach((e) => {
-              e.classList.add("skip");
+              if(e.value != "__other_option__"){
+                e.classList.add("skip");
+              }  
             });
           text.classList.remove("skip");
+          e.target.classList.remove("skip");
         } else {
           text.style.display = "none";
+          text.value = "";
           document
             .querySelectorAll(
               "#bairro input[type='radio'], #bairro input[type='checkbox']"
@@ -541,59 +559,41 @@
         }
       });
 
-      document.getElementById("cidade").addEventListener("change", (e) => {
-        console.log(e);
-        const text = document.getElementById("239843195");
+      
+      document.getElementById("tamanhofraldas").addEventListener("change", (e) => {
         clearTimeout(timeout);
-        if (e.target.value === "Outro") {
-          text.style.display = "block";
-          document
-            .querySelectorAll(
-              "#cidade input[type='radio'], #cidade input[type='checkbox']"
-            )
-            .forEach((e) => {
-              e.classList.add("skip");
-            });
-          text.classList.remove("skip");
-        } else {
-          text.style.display = "none";
-          document
-            .querySelectorAll(
-              "#cidade input[type='radio'], #cidade input[type='checkbox']"
-            )
-            .forEach((e) => {
-              e.classList.remove("skip");
-            });
-          text.classList.add("skip");
+        if(validarMultipleChoice(e.currentTarget, 3)){
+          alert("Solicite até 3 itens")
+          e.target.checked = false;
         }
       });
 
       document.getElementById("donation").addEventListener("change", (e) => {
-        console.log(e);
         const text = document.getElementById("1077210769");
         clearTimeout(timeout);
-        if (e.target.value === "Outro") {
+
+        if(validarMultipleChoice(e.currentTarget, 3)){
+          alert("Solicite até 3 itens")
+          e.target.checked = false;
+        }
+
+        if (e.target.value === "__other_option__" && e.target.checked) {
           text.style.display = "block";
-          document
-            .querySelectorAll(
-              "#donation input[type='radio'], #donation input[type='checkbox']"
-            )
-            .forEach((e) => {
-              e.classList.add("skip");
-            });
           text.classList.remove("skip");
-        } else {
-          text.style.display = "none";
-          document
-            .querySelectorAll(
-              "#donation input[type='radio'], #donation input[type='checkbox']"
-            )
-            .forEach((e) => {
-              e.classList.remove("skip");
-            });
+        } else if (e.target.value === "__other_option__" && !e.target.checked) {
+          text.value = ""
+          text.style.display = "none"
           text.classList.add("skip");
         }
+
       });
+
+      function validarMultipleChoice(container, maxOpcoes) {
+        if(container.querySelectorAll("input:checked").length > maxOpcoes)
+          return true;
+        else
+          return false;
+        }
 
       function validarCPF() {
         const cpf = document
@@ -638,7 +638,6 @@
           return true;
         }
         let name = build[i].name;
-        console.log(i, build[i]);
         let el = document.getElementsByName(name);
 
         let hasValue = false;
@@ -701,13 +700,11 @@
       }
 
       function listCheckbox(obj, name, val) {
-        console.log(obj, name, val);
         if (!obj[name]) {
           obj[name] = [val];
         } else {
           obj[name].push(val);
         }
-        console.log(obj);
         return obj;
       }
 
@@ -716,7 +713,6 @@
         const e = document.querySelectorAll(
           "input:not(.skip), textarea:not(.skip), select:not(.skip)"
         );
-        console.log(e);
         for (let i = 0; i < e.length; i++) {
           let c = e[i],
             n = c.getAttribute("name");
@@ -725,24 +721,27 @@
               ((c.type === "checkbox" || c.type === "radio") && c.checked) ||
               (c.type !== "checkbox" && c.type !== "radio" && obj[n])
             ) {
-              obj = listCheckbox(obj, n, c.value);
+                  obj = listCheckbox(obj, n, c.value);
             } else if (c.type !== "checkbox" && c.type !== "radio") {
-              obj[n] = c.value;
+                if(c.name == "entry.1722680704" || c.name == "entry.1290168757") {
+                  //remoção da mascara do cpf e cep
+                  obj[n] = c.value.replace(/[^\d]+/g, "");
+                } else {
+                  obj[n] = c.value;
+              }
             }
           }
         }
-        const linearObj = {};
+       const linearObj = {};
         Object.keys(obj).forEach((k) => {
           linearObj[k] = String(obj[k]);
         });
-
-        console.log(linearObj);
-        return linearObj;
+       // return linearObj;
+        return obj;
       }
 
       function checkData(data) {
         Object.keys(data).forEach((entry, i) => {
-          console.log(entry, i + 1, build[i + 1], data[entry]);
           if (build[i + 1].required && !data[entry]) {
             highlightRequired(entry);
             throw "Campo obrigatório" + entry;
@@ -759,16 +758,12 @@
 
       async function send() {
         const data = formatObj();
-        console.log(data);
         checkData(data);
         data["entry.1881485267"] = document.getElementById("1881485267").value
-        const formData = new FormData();
-        for (var key in data) {
-          formData.append(key, data[key]);
-        }
+
 
         let url = "/mensagem-fim.html";
-        enviarForm(
+        enviarForm2(
           "1FAIpQLSdYWBenNkFQng8GbuSAk4O4OJ4L8k65mlTNbpwvAoXC3xNCbQ",
           data,
           url
@@ -820,7 +815,6 @@
           masks.forEach((el) => {
             const id = el.id;
             const mask = el.getAttribute("data-mask");
-            console.log(id, mask);
             script += `const Mask_${id} = IMask(document.getElementById("${id}"), {
           mask: [
             {
