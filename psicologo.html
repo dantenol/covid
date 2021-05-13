@@ -486,7 +486,6 @@
                 let thisStep = step;
                 setTimeout(() => {
                   if (step === thisStep) {
-                    console.log(1212);
                     next();
                   }
                 }, 200);
@@ -503,7 +502,6 @@
           masks.forEach((el) => {
             const id = el.id;
             const mask = el.getAttribute("data-mask");
-            console.log(id, mask);
             script += `const Mask_${id} = IMask(document.getElementById("${id}"), {
           mask: [
             {

@@ -3,7 +3,6 @@ async function enviarForm(id, data, nextUrl) {
   for (var key in data) {
     formData.append(key, data[key]);
   }
-
   try {
     const res = await fetch(
       "https://docs.google.com/forms/d/e/" + id + "/formResponse",
@@ -13,10 +12,10 @@ async function enviarForm(id, data, nextUrl) {
         body: formData
       }
     );
-   window.location.href = nextUrl;
-   console.log(res);
+    window.location.href = nextUrl;
   } catch (error) {
     console.log(error);
+    window.location.href = "erro.html";
   }
 }
 
@@ -43,5 +42,6 @@ async function enviarForm2(id, data, nextUrl) {
     window.location.href = nextUrl;
   } catch (error) {
     console.log(error);
+    window.location.href = "erro.html";
   }
 }
