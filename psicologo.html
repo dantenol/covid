@@ -359,32 +359,6 @@
         return obj;
       }
 
-      function formatObj() {
-        obj = {};
-        const e = document.querySelectorAll("input, textarea, select");
-        for (let i = 0; i < e.length; i++) {
-          let c = e[i],
-            n = c.getAttribute("name");
-          if (n) {
-            if (
-              ((c.type === "checkbox" || c.type === "radio") && c.checked) ||
-              (c.type !== "checkbox" && c.type !== "radio" && obj[n])
-            ) {
-              obj = listCheckbox(obj, n, c.value);
-            } else if (c.type !== "checkbox" && c.type !== "radio") {
-              obj[n] = c.value;
-            }
-          }
-        }
-        const linearObj = {};
-        Object.keys(obj).forEach((k) => {
-          linearObj[k] = String(obj[k]);
-        });
-
-        console.log(linearObj);
-        return linearObj;
-      }
-
       function checkData(data) {
         Object.keys(data).forEach((entry, i) => {
           if (build[i].required && !data[entry]) {
@@ -404,7 +378,7 @@
 
       function formatarObj() {
         obj = {};
-        const e = document.querySelectorAll("input, textarea, select");
+        const e = document.querySelectorAll("input:checked, input[type=text], input[type=number],textarea, select");
         for (let i = 0; i < e.length; i++) {
           let c = e[i],
             n = c.getAttribute("name");
@@ -442,32 +416,13 @@
         });
       }
 
-      function save() {
-        const data = formatObj();
-        checkData(data);
-        const id = "answer." + Math.round(Math.random() * (9999 - 1000) + 1000);
-        localStorage.setItem(id, JSON.stringify(data));
-        alert(
-          "Suas respostas foram salvas. Não esqueça de envia-las mais tarde!"
-        );
-        resetForm();
-      }
-
-      function submit() {
-        if (false) {
-          save();
-        } else {
-          enviar();
-        }
-      }
-
       window.document.querySelectorAll("button.next").forEach((b) => {
         b.addEventListener("click", next, false);
       });
 
       window.document
         .getElementById("send")
-        .addEventListener("click", submit, false);
+        .addEventListener("click", enviar, false);
 
       window.addEventListener("load", function () {
         if (true) {
