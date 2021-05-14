@@ -20,19 +20,19 @@
       </div>
       <div class="question">
         <p class="title">
-          Qual o seu nome?*
+          <span>*</span> Qual o seu nome? 
         </p>
         <input
           id="nome"
           type="text"
-          name="entry.569586207"
+          name="entry.1021989653"
           placeholder="Digite aqui..."
         />
-        <button onclick="next()">Próximo</button>
+        <button onclick="next(this)">Próximo</button>
       </div>
       <div class="question">
         <p class="title">
-          E seu número de celular?*
+          <span>*</span> E seu número de celular?
         </p>
         <p class="subtitle">
           Vamos te ligar apenas quando estiver em um momento seguro!
@@ -40,24 +40,24 @@
         <input
           type="tel"
           id="tel"
-          name="entry.1540718756"
+          name="entry.1390541834"
           placeholder="Digite aqui..."
         />
-        <button onclick="next()">
+        <button onclick="next(this)">
           Próximo
         </button>
       </div>
       <div class="question">
         <p class="title">
-          Qual o melhor dia e horário para podermos te ligar?
+          <span>*</span> Qual o melhor dia e horário para podermos te ligar?
         </p>
         <input
-          type="text"
+          type="datetime-local"
           id="time"
-          name="entry.635923361"
+          name="entry.1662277551"
           placeholder="Digite aqui..."
         />
-        <button id="send" onclick="enviar()">
+        <button id="send" onclick="enviar(this)">
           Enviar
         </button>
       </div>
@@ -97,32 +97,45 @@
         return obj;
       }
 
-      function enviar() {
+      function enviar(obj) {
+        if(validar(obj)){
         const data = formatarObj();
-        data["entry.635923361"] =
-          data["entry.635923361"] + "  VÍTIMA DE VIOLÊNCIIA DOMÉSTICA";
         enviarForm(
-          "1FAIpQLSdvavK0X21JDTgDPYIFCyQRzCFxFXC5D1A_ARhCdsf6UIBddA",
+          "1FAIpQLSczMF3Oes3bIO06pt1oJZJwPIxr3ePj_92O8bcF8V7hFtDaLg",
           data,
           "psi-fim.html"
         );
         document.getElementById("send").disabled = true;
+        }
       }
 
-      function next() {
-        const mask = questionRegex[step];
-        if (
-          mask &&
-          !mask.test(document.getElementById(questionNames[step]).value)
-        ) {
-          alert("O campo é obrigatório!");
+      function validar(obj){
+        var comp;
+        if(obj){
+          comp = obj.parentElement.querySelectorAll("input")[0];
+          if(comp.value == ""){
+            comp.focus();
+            alert("O campo é obrigatório!");
+          return false;
+        } else if(comp.type == "tel" && comp.value.length < 15){
+          comp.focus();
+          alert("Favor informar um telefone válido!");
           return false;
         }
+      }
+        return true;
+      }
+
+      function next(obj) {
+        if(validar(obj)){
+        const mask = questionRegex[step];
+
         const els = document.querySelectorAll(".question");
         els.forEach((e) => {
           e.style.top = "-" + (step + 1) * 100 + "%";
         });
         step++;
+        }
       }
 
       window.addEventListener("load", function () {
